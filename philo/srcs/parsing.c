@@ -1,0 +1,1 @@
+#include "../incs/philo.h"

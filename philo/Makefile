@@ -1,12 +1,14 @@
 NAME = philo
 
-SRCS = srcs/philo.c
+SRCS = srcs/philo.c \
+	srcs/parsing.c \
+	srcs/utils.c
 
 INCS = incs/philo.h
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -pthread
+CFLAGS = -Wall -Werror -Wextra -pthread -fsanitize=thread
 
 OBJS = $(SRCS:.c=.o)
 
@@ -19,6 +21,7 @@ _BLUE = $'\033[34m
 _PURPLE = $'\033[35m
 _CYAN = $'\033[36m
 _GREY = $'\033[37m
+_WHITE = $'\033[0m
 
 all: $(NAME)
 
