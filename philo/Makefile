@@ -31,9 +31,7 @@ $(NAME): $(OBJS)
 	@echo "$(_GREEN)Philosophers project compiled"
 
 %.o : %.clean
-	@echo "$(_CYAN)Generating object files"
 	$(CC) $(CFLAGS) -I $(INCS) -o ${<:.c=.o} -c $<
-	@echo "$(_GREEN)Object files are ready"
 
 clean:
 	echo "$(_YELLOW)Deleting object files"
