@@ -25,17 +25,22 @@
 typedef struct s_philo
 {
 	int				id;
+	int				die;
+	int				eat;
+	int				sleep;
+	int				meals;
+	int				max_meals;
+	unsigned long	start;
+	unsigned long	last_meal;
+	pthread_t		thread;
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
+	pthread_mutex_t	active;
 }					t_philo;
 
 typedef struct s_data
 {
 	int				nb;
-	int				die;
-	int				eat;
-	int				sleep;
-	int				max_meals;
 	pthread_mutex_t	*forks;
 	t_philo			*philo;
 }				t_data;

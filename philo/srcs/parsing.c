@@ -15,29 +15,43 @@
 void	print_data(t_data *data)
 {
 	printf("number of philosophers=%d\n", data->nb);
-	printf("time to die=%d\n", data->die);
-	printf("time to eat=%d\n", data->eat);
-	printf("time to sleep=%d\n", data->sleep);
-	printf("max meals=%d\n", data->max_meals);
+	printf("time to die=%d\n", data->philo[0].die / 1000);
+	printf("time to eat=%d\n", data->philo[0].eat / 1000);
+	printf("time to sleep=%d\n", data->philo[0].sleep / 1000);
+	printf("max meals=%d\n---------------------\n", data->philo[0].max_meals);
 }
 
 int	check_params(t_data *data)
 {
-	if (data->nb <= 0 || data->die < 0 || data->eat < 0
-		|| data->sleep < 0 || data->max_meals < 0)
+	if (data->philo[0].die < 0 || data->philo[0].eat < 0
+		|| data->philo[0].sleep < 0
+		|| (data->philo[0].max_meals < 0 && data->philo[0].max_meals != -1))
 		return (1);
 	else
 		return (0);
 }
-
 int	parse_params(int ac, char **av, t_data *data)
 {
+	int	i;
+
+	i = 0;
+	
 	data->nb = ft_atoi(av[1]);
-	data->die = ft_atoi(av[2]);
-	data->eat = ft_atoi(av[3]);
-	data->sleep = ft_atoi(av[4]);
-	data->max_meals = 0;
-	if (ac == 6)
-		data->max_meals = ft_atoi(av[5]);
+	if (data->nb <= 0)
+		return (1);
+	data->philo = malloc(sizeof(t_philo) * (data->nb + 1));
+	while (i < data->nb)
+	{
+		data->philo[i].id = i + 1;
+		data->philo[i].die = ft_atoi(av[2]) * 1000;
+		data->philo[i].eat = ft_atoi(av[3]) * 1000;
+		data->philo[i].sleep = ft_atoi(av[4]) * 1000;
+		data->philo[i].meals = 0;
+		data->philo[i].last_meal = data->philo[i].die;
+		data->philo[i].max_meals = -1;
+		if (ac == 6)
+			data->philo[i].max_meals = ft_atoi(av[5]);
+		i++;
+	}
 	return (check_params(data));
 }

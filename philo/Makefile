@@ -26,22 +26,22 @@ _WHITE = $'\033[0m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(_CYAN)compiling project Philosophers"
+	@echo "$(_CYAN)compiling project Philosophers$(_WHITE)"
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
-	@echo "$(_GREEN)Philosophers project compiled"
+	@echo "$(_GREEN)Philosophers project compiled$(_WHITE)"
 
 %.o : %.clean
 	$(CC) $(CFLAGS) -I $(INCS) -o ${<:.c=.o} -c $<
 
 clean:
-	echo "$(_YELLOW)Deleting object files"
+	echo "$(_YELLOW)Deleting object files$(_WHITE)"
 	rm -f $(OBS)
-	echo "$(_GREEN)Deleted object files"
+	echo "$(_GREEN)Deleted object files$(_WHITE)"
 
 fclean: clean
-	echo "$(_YELLOW)Deleting binary"
+	echo "$(_YELLOW)Deleting binary$(_WHITE)"
 	rm -f $(NAME)
-	echo "$(_GREEN)Deleted binary"
+	echo "$(_GREEN)Deleted binary$(_WHITE)"
 
 re : fclean all
 
