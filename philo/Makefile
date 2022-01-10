@@ -34,14 +34,14 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -I $(INCS) -o ${<:.c=.o} -c $<
 
 clean:
-	echo "$(_YELLOW)Deleting object files$(_WHITE)"
+	@echo "$(_YELLOW)Deleting object files$(_WHITE)"
 	rm -f $(OBS)
-	echo "$(_GREEN)Deleted object files$(_WHITE)"
+	@echo "$(_GREEN)Deleted object files$(_WHITE)"
 
 fclean: clean
-	echo "$(_YELLOW)Deleting binary$(_WHITE)"
+	@echo "$(_YELLOW)Deleting binary$(_WHITE)"
 	rm -f $(NAME)
-	echo "$(_GREEN)Deleted binary$(_WHITE)"
+	@echo "$(_GREEN)Deleted binary$(_WHITE)"
 
 re : fclean all
 

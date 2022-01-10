@@ -6,20 +6,20 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2021/12/29 18:00:57 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:22:44 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
+// === TO-DO ===
+
+// Modifier les unites pour le last_meal
+
 // === WORKFLOW ===
 
-// 10
+// 9 OK
 // Prevention des deadlocks et datarace
-
-// 9
-// Liberation des ressources du thread (reaper)
-// f = pthread_detach()
 
 // 8
 // Liberation des ressources du thread (philosophe) apres sa routine
@@ -46,14 +46,14 @@
 // join des threads
 // f = pthread_join()
 
-// 5b
+// 5b OK
 // Doit verifier le temps écoulé depuis le dernier repas sur chaque philosophe
 // Si un philosophe meurt, doit detach tous les philosophes
 
-// 5a
+// 5a OK
 // Doit check si tous les philosophes ont atteint leur nombre de repas max
 
-// 5
+// 5 OK
 // Creation du thread superviseur (reaper)
 //  - Doit avoir les adresses de tous les philosophes
 //  - Doit tuer les philosophes
@@ -91,6 +91,28 @@
 // f = parse_arguments()
 // r = args[]
 
+// ms = s * 1000 et us / 1000
+
+unsigned long	timestamp(unsigned long start)
+{
+	struct timeval	time;
+	unsigned long	stamp;
+
+	gettimeofday(&time, NULL);
+	stamp = ((time.tv_sec * 1000) + (time.tv_usec / 1000)) - start;
+	return (stamp);
+}
+
+unsigned long	gettime(void)
+{
+	struct timeval	current;
+	unsigned long	time;
+
+	gettimeofday(&current, NULL);
+	time = (current.tv_sec * 1000) + (current.tv_usec / 1000);
+	return (time);
+}
+
 void	initialization(t_data *data, struct timeval start)
 {
 	int	i;
@@ -117,54 +139,67 @@ void	initialization(t_data *data, struct timeval start)
 			data->philo[i].second = &data->forks[i];
 		}
 		pthread_mutex_init(&data->philo[i].active, NULL);
+		pthread_mutex_init(&data->philo[i].alive, NULL);
 		data->philo[i].start = (start.tv_sec * 1000) + (start.tv_usec / 1000);
-		printf("philosopher %d picks up %p first and %p second\n", data->philo[i].id, data->philo[i].first, data->philo[i].second);
+		data->philo[i].last_meal = gettime();
+		printf("philosopher %d picks up %p first and %p second and life = %d\n", data->philo[i].id, data->philo[i].first, data->philo[i].second, data->philo[i].life);
 		i++;
 	}
 	print_data(data);
 }
 
-// ms = s * 1000 et us / 1000
-
-unsigned long	timestamp(unsigned long start)
+void	ft_usleep(unsigned long time)
 {
-	struct timeval	time;
-	unsigned long	stamp;
+	struct timeval	current;
+	unsigned long	current_ms;
+	unsigned long	target;
 
-	gettimeofday(&time, NULL);
-	stamp = ((time.tv_sec * 1000) + (time.tv_usec / 1000)) - start;
-	return (stamp);
+	gettimeofday(&current, NULL);
+	current_ms = (current.tv_sec * 1000) + (current.tv_usec / 1000);
+	target = current_ms + time;
+	// printf("current_ms = %ldms | target ms = %ldms | current_ms - target = %ld\n", current_ms, target, current_ms - target);
+	while (current_ms < target)
+	{
+		gettimeofday(&current, NULL);
+		// printf("current_ms = %ldms | target ms = %ldms | current_ms - target = %ld\n", current_ms, target, current_ms - target);
+		current_ms = (current.tv_sec * 1000) + (current.tv_usec / 1000);
+	}
 }
 
-// void	*routine(void *v_philo)
-// {
-// 	t_philo	*philo;
+int	action(t_philo *philo, int code)
+{
+	int	ret;
 
-// 	philo = (t_philo*)v_philo;
-// 	while ((philo->meals < philo->max_meals || philo->max_meals == -1) && 1)
-// 	{
-// 		pthread_mutex_lock(&philo->active);
-// 		pthread_mutex_lock(philo->first);
-// 		printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
-// 		pthread_mutex_lock(philo->second);
-// 		printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
-// 		printf("%lums %d is eating\n", timestamp(philo->start), philo->id);
-// 		// printf("meal number %d, max allowed is %d\n", philo->meals + 1, philo->max_meals);
-// 		// pthread_mutex_lock(&philo->active);
-// 		philo->meals++;
-// 		philo->last_meal = timestamp(philo->start);
-// 		// pthread_mutex_unlock(&philo->active);
-// 		usleep(philo->eat);
-// 		pthread_mutex_unlock(philo->first);
-// 		pthread_mutex_unlock(philo->second);
-// 		printf("%lums %d is sleeping\n", timestamp(philo->start), philo->id);
-// 		usleep(philo->sleep);
-// 		printf("%lums %d is thinking\n", timestamp(philo->start), philo->id);
-// 		pthread_mutex_unlock(&philo->active);
-// 	}
-// 	printf("%d took enough meals\n", philo->id);
-// 	return ((void*)0);
-// }
+	ret = 1;
+	pthread_mutex_lock(&philo->active);
+	pthread_mutex_lock(&philo->alive);
+	if (philo->life == 1)
+	{
+		if (code == 1)
+			printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
+		else if (code == 2)
+		{
+			printf("%lums %d is eating\n", timestamp(philo->start), philo->id);
+			philo->last_meal = gettime();
+			// ft_mssleep(philo->eat);
+			usleep(philo->eat * 1000);
+			// philo->last_meal = gettime();
+			philo->meals++;
+		}
+		else if (code == 3)
+		{
+			printf("%lums %d is sleeping\n", timestamp(philo->start), philo->id);
+			// ft_mssleep(philo->sleep);
+			usleep(philo->sleep * 1000);
+		}
+		else
+			printf("%lums %d is thinking\n", timestamp(philo->start), philo->id);
+		ret = 0;
+	}
+	pthread_mutex_unlock(&philo->active);
+	pthread_mutex_unlock(&philo->alive);
+	return (ret);
+}
 
 void	*routine(void *v_philo)
 {
@@ -173,53 +208,114 @@ void	*routine(void *v_philo)
 	philo = (t_philo*)v_philo;
 	while (1)
 	{
-		pthread_mutex_lock(&philo->active);
 		pthread_mutex_lock(philo->first);
-		printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
-		pthread_mutex_lock(philo->second);
-		printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
-		printf("%lums %d is eating\n", timestamp(philo->start), philo->id);
-		// printf("meal number %d, max allowed is %d\n", philo->meals + 1, philo->max_meals);
-		// pthread_mutex_lock(&philo->active);
-		philo->meals++;
-		philo->last_meal = timestamp(philo->start);
-		usleep(philo->eat);
-		philo->last_meal = timestamp(philo->start);
-		// pthread_mutex_unlock(&philo->active);
-		pthread_mutex_unlock(philo->first);
-		pthread_mutex_unlock(philo->second);
-		if (philo->meals == philo->max_meals && philo->max_meals != -1)
+		if (action(philo, 1) == 1)
+		{
+			pthread_mutex_unlock(philo->first);
 			break ;
-		printf("%lums %d is sleeping\n", timestamp(philo->start), philo->id);
-		usleep(philo->sleep);
-		printf("%lums %d is thinking\n", timestamp(philo->start), philo->id);
-		pthread_mutex_unlock(&philo->active);
+		}
+		pthread_mutex_lock(philo->second);
+		if (action(philo, 1) == 1)
+		{
+			pthread_mutex_unlock(philo->first);
+			pthread_mutex_unlock(philo->second);
+			break ;
+		}
+		if (action(philo, 2) == 1)
+			break ;
+		pthread_mutex_unlock(philo->first);
+		printf("\t%lums %d has dropped a fork\n", timestamp(philo->start), philo->id);
+		pthread_mutex_unlock(philo->second);
+		printf("\t%lums %d has dropped a fork\n", timestamp(philo->start), philo->id);
+		pthread_mutex_lock(&philo->alive);
+		if ((philo->meals == philo->max_meals && philo->max_meals != -1) || philo->life == 0)
+		{
+			printf("%lums exiting thread %d\n", timestamp(philo->start), philo->id);
+			pthread_mutex_unlock(&philo->alive);
+			break ;
+		}
+		pthread_mutex_unlock(&philo->alive);
+		if (action(philo, 3) == 1)
+			break ;
+		if (action(philo, 4) == 1)
+			break ;
 	}
-	printf("%d took enough meals\n", philo->id);
+	//printf("%lums %d took enough meals\n", timestamp(philo->start), philo->id);
 	return ((void*)0);
 }
 
-int		check_max_meals(t_data *data)
+// void	action(t_philo *philo, int code)
+// {
+// 	pthread_mutex_lock(&philo->active);
+// 	pthread_mutex_lock(&philo->alive);
+// 	if (philo->life == 1)
+// 	{
+// 		if (code == 1)
+// 			printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
+// 		else if (code == 2)
+// 		{
+// 			printf("%lums %d is eating\n", timestamp(philo->start), philo->id);
+// 			philo->last_meal = gettime();
+// 			ft_usleep(philo->eat);
+// 			//philo->last_meal = gettime();
+// 			philo->meals++;
+// 		}
+// 		else if (code == 3)
+// 		{
+// 			printf("%lums %d is sleeping\n", timestamp(philo->start), philo->id);
+// 			ft_usleep(philo->sleep);
+// 		}
+// 		else
+// 			printf("%lums %d is thinking\n", timestamp(philo->start), philo->id);
+// 	}
+// 	pthread_mutex_unlock(&philo->active);
+// 	pthread_mutex_unlock(&philo->alive);
+// }
+
+// void	*routine(void *v_philo)
+// {
+// 	t_philo	*philo;
+
+// 	philo = (t_philo*)v_philo;
+// 	while (1)
+// 	{
+// 		pthread_mutex_lock(philo->first);
+// 		action(philo, 1);
+// 		pthread_mutex_lock(philo->second);
+// 		action(philo, 1);
+// 		action(philo, 2);
+// 		pthread_mutex_unlock(philo->first);
+// 		// printf("\t%lums %d has dropped a fork\n", timestamp(philo->start), philo->id);
+// 		pthread_mutex_unlock(philo->second);
+// 		// printf("\t%lums %d has dropped a fork\n", timestamp(philo->start), philo->id);
+// 		pthread_mutex_lock(&philo->alive);
+// 		if ((philo->meals == philo->max_meals && philo->max_meals != -1) || philo->life == 0)
+// 		{
+// 			printf("exiting thread %d\n", philo->id);
+// 			pthread_mutex_unlock(&philo->alive);
+// 			break ;
+// 		}
+// 		pthread_mutex_unlock(&philo->alive);
+// 		action(philo, 3);
+// 		action(philo, 4);
+// 	}
+// 	//printf("%lums %d took enough meals\n", timestamp(philo->start), philo->id);
+// 	return ((void*)0);
+// }
+
+void	death(t_data *data)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb)
 	{
-		if (data->philo[i].meals != data->philo[i].max_meals)
-			return (0);
+		pthread_mutex_lock(&data->philo[i].alive);
+		data->philo[i].life = 0;
+		pthread_mutex_unlock(&data->philo[i].alive);
 		i++;
 	}
-	return (1);
 }
-
-// void	end_sim(t_data *data)
-// {
-
-// }
-
-// Verifier le temps depuis le dernier repas pour chaque philosophe
-
 
 void	*supervisor(void *v_data)
 {
@@ -233,16 +329,22 @@ void	*supervisor(void *v_data)
 		while (i < data->nb)
 		{
 			pthread_mutex_lock(&data->philo[i].active);
-			if (timestamp(data->philo[i].last_meal) >= (unsigned long)data->philo[i].die)
+			if (data->philo[i].meals == data->philo[i].max_meals && data->philo[i].max_meals != -1)
 			{
+				pthread_mutex_unlock(&data->philo[i].active);
+				return (NULL);
+			}
+			if (data->philo[i].last_meal - data->philo[i].start >= (unsigned long)data->philo[i].die)
+			{
+				death(data);
 				printf("%lums %d has died\n", timestamp(data->philo[i].start), data->philo[i].id);
+				pthread_mutex_unlock(&data->philo[i].active);
 				return (NULL);
 			}
 			pthread_mutex_unlock(&data->philo[i].active);
 			i++;
 		}
 	}
-	//end_sim(data);
 	return (NULL);
 }
 
@@ -259,7 +361,6 @@ void	launch_philos(t_data *data)
 	}
 	pthread_create(&reaper, NULL, supervisor, data);
 	pthread_join(reaper, NULL);
-	// pthread_detach(reaper);
 }
 
 int	core(int ac, char **av)

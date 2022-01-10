@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:57:02 by jabenjam          #+#    #+#             */
-/*   Updated: 2021/12/29 14:56:33 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:40:29 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <sys/wait.h>
 # include <pthread.h>
 
+// time values are stored in usec
+
 typedef struct s_philo
 {
 	int				id;
@@ -30,12 +32,14 @@ typedef struct s_philo
 	int				sleep;
 	int				meals;
 	int				max_meals;
+	int				life;
 	unsigned long	start;
 	unsigned long	last_meal;
 	pthread_t		thread;
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
 	pthread_mutex_t	active;
+	pthread_mutex_t alive;
 }					t_philo;
 
 typedef struct s_data
@@ -69,6 +73,8 @@ int		check_params(t_data *data);
 */
 
 int		ft_atoi(const char *str);
+unsigned long	gettime(void);
+
 
 // A implementer :
 
