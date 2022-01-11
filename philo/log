@@ -1,0 +1,148 @@
+fork number 0 address is 0x7b1400000000
+fork number 1 address is 0x7b1400000028
+philosopher 1 picks up 0x7b1400000028 first and 0x7b1400000000 second and life = 1
+philosopher 2 picks up 0x7b1400000028 first and 0x7b1400000000 second and life = 1
+number of philosophers=2
+time to die=310ms
+time to eat=50ms
+time to sleep=140ms
+max meals=10
+---------------------
+2ms 1 has taken a fork
+2ms 1 has taken a fork
+2ms 1 is eating
+	52ms 1 has dropped a fork
+	52ms 1 has dropped a fork
+52ms 1 is sleeping
+52ms 2 has taken a fork
+52ms 2 has taken a fork
+52ms 2 is eating
+	102ms 2 has dropped a fork
+	102ms 2 has dropped a fork
+102ms 2 is sleeping
+192ms 1 is thinking
+192ms 1 has taken a fork
+192ms 1 has taken a fork
+192ms 1 is eating
+	242ms 1 has dropped a fork
+	242ms 1 has dropped a fork
+242ms 2 is thinking
+242ms 1 is sleeping
+242ms 2 has taken a fork
+242ms 2 has taken a fork
+242ms 2 is eating
+	293ms 2 has dropped a fork
+	293ms 2 has dropped a fork
+293ms 2 is sleeping
+382ms 1 is thinking
+382ms 1 has taken a fork
+382ms 1 has taken a fork
+382ms 1 is eating
+	432ms 1 has dropped a fork
+	432ms 1 has dropped a fork
+432ms 1 is sleeping
+433ms 2 is thinking
+433ms 2 has taken a fork
+433ms 2 has taken a fork
+433ms 2 is eating
+	483ms 2 has dropped a fork
+	483ms 2 has dropped a fork
+483ms 2 is sleeping
+572ms 1 is thinking
+572ms 1 has taken a fork
+572ms 1 has taken a fork
+572ms 1 is eating
+	622ms 1 has dropped a fork
+	622ms 1 has dropped a fork
+622ms 1 is sleeping
+623ms 2 is thinking
+623ms 2 has taken a fork
+623ms 2 has taken a fork
+623ms 2 is eating
+	673ms 2 has dropped a fork
+	673ms 2 has dropped a fork
+673ms 2 is sleeping
+762ms 1 is thinking
+762ms 1 has taken a fork
+762ms 1 has taken a fork
+762ms 1 is eating
+	812ms 1 has dropped a fork
+	812ms 1 has dropped a fork
+812ms 1 is sleeping
+813ms 2 is thinking
+813ms 2 has taken a fork
+813ms 2 has taken a fork
+813ms 2 is eating
+	863ms 2 has dropped a fork
+	863ms 2 has dropped a fork
+863ms 2 is sleeping
+952ms 1 is thinking
+952ms 1 has taken a fork
+952ms 1 has taken a fork
+952ms 1 is eating
+	1002ms 1 has dropped a fork
+	1002ms 1 has dropped a fork
+1002ms 1 is sleeping
+1003ms 2 is thinking
+1003ms 2 has taken a fork
+1003ms 2 has taken a fork
+1003ms 2 is eating
+	1053ms 2 has dropped a fork
+	1053ms 2 has dropped a fork
+1053ms 2 is sleeping
+1142ms 1 is thinking
+1142ms 1 has taken a fork
+1142ms 1 has taken a fork
+1142ms 1 is eating
+	1192ms 1 has dropped a fork
+	1192ms 1 has dropped a fork
+1192ms 1 is sleeping
+1193ms 2 is thinking
+1193ms 2 has taken a fork
+1193ms 2 has taken a fork
+1193ms 2 is eating
+	1243ms 2 has dropped a fork
+	1243ms 2 has dropped a fork
+1243ms 2 is sleeping
+1332ms 1 is thinking
+1332ms 1 has taken a fork
+1332ms 1 has taken a fork
+1332ms 1 is eating
+	1382ms 1 has dropped a fork
+	1382ms 1 has dropped a fork
+1382ms 1 is sleeping
+1383ms 2 is thinking
+1383ms 2 has taken a fork
+1383ms 2 has taken a fork
+1383ms 2 is eating
+	1433ms 2 has dropped a fork
+	1433ms 2 has dropped a fork
+1433ms 2 is sleeping
+1522ms 1 is thinking
+1522ms 1 has taken a fork
+1522ms 1 has taken a fork
+1522ms 1 is eating
+	1572ms 1 has dropped a fork
+	1572ms 1 has dropped a fork
+1572ms 1 is sleeping
+1573ms 2 is thinking
+1573ms 2 has taken a fork
+1573ms 2 has taken a fork
+1573ms 2 is eating
+	1623ms 2 has dropped a fork
+	1623ms 2 has dropped a fork
+1623ms 2 is sleeping
+1712ms 1 is thinking
+1712ms 1 has taken a fork
+1712ms 1 has taken a fork
+1712ms 1 is eating
+	1762ms 1 has dropped a fork
+	1762ms 1 has dropped a fork
+1762ms exiting thread 1 meals=10 max_meals=10 life=1
+1763ms 2 is thinking
+1763ms 2 has taken a fork
+1763ms 2 has taken a fork
+1763ms 2 is eating
+	1813ms 2 has dropped a fork
+	1813ms 2 has dropped a fork
+1813ms exiting thread 2 meals=10 max_meals=10 life=1

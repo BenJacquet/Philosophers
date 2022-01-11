@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:17 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/10 18:11:20 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:38:04 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	parse_params(int ac, char **av, t_data *data)
 		data->philo[i].eat = ft_atoi(av[3]);
 		data->philo[i].sleep = ft_atoi(av[4]);
 		data->philo[i].meals = 0;
-		data->philo[i].last_meal = gettime();
 		data->philo[i].max_meals = -1;
 		data->philo[i].life = 1;
 		if (ac == 6)
