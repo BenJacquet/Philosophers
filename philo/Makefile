@@ -8,7 +8,7 @@ INCS = incs/philo.h
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -pthread #-fsanitize=thread
+CFLAGS = -Wall -Werror -Wextra -pthread -fsanitize=thread
 
 OBJS = $(SRCS:.c=.o)
 

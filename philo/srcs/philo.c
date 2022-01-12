@@ -6,15 +6,11 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/12 15:52:33 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:53:01 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
-
-// === TO-DO ===
-
-// Modifier les unites pour le last_meal
 
 // === WORKFLOW ===
 
@@ -25,10 +21,6 @@
 // Liberation des ressources du thread (philosophe) apres sa routine
 // Liberation des mutex (fourchettes)
 // f = pthread_detach()
-
-// 7b
-// Sleep fait maison
-// f = ft_sleep()
 
 // 7a OK
 // Routine des philos :
@@ -123,7 +115,7 @@ void	initialization(t_data *data, struct timeval start)
 	while (i < data->nb)
 	{
 		pthread_mutex_init(&data->forks[i], NULL);
-		printf("fork number %d address is %p\n", i, &data->forks[i]);
+		// printf("fork number %d address is %p\n", i, &data->forks[i]);
 		i++;
 	}
 	i = 0;
@@ -139,14 +131,14 @@ void	initialization(t_data *data, struct timeval start)
 			data->philo[i].first = &data->forks[(i + 1) % data->nb];
 			data->philo[i].second = &data->forks[i];
 		}
-		printf("philosopher %d picks up %p first and %p second and life = %d\n", data->philo[i].id, data->philo[i].first, data->philo[i].second, data->philo[i].life);
+		// printf("philosopher %d picks up %p first and %p second and life = %d\n", data->philo[i].id, data->philo[i].first, data->philo[i].second, data->philo[i].life);
 		pthread_mutex_init(&data->philo[i].active, NULL);
 		pthread_mutex_init(&data->philo[i].alive, NULL);
 		data->philo[i].start = start;
 		gettimeofday(&data->philo[i].last_meal, NULL);
 		i++;
 	}
-	print_data(data);
+	// print_data(data);
 }
 
 void	print_action(const char *action, t_philo *philo, int meal)
@@ -316,7 +308,7 @@ int	core(int ac, char **av)
 	gettimeofday(&start, NULL);
 	if (parse_params(ac, av, data) == 1)
 	{
-		// free(data);
+		free(data);
 		return (1);
 	}
 	initialization(data, start);
