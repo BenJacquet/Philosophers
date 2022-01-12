@@ -1,148 +1,864 @@
-fork number 0 address is 0x7b1400000000
-fork number 1 address is 0x7b1400000028
-philosopher 1 picks up 0x7b1400000028 first and 0x7b1400000000 second and life = 1
-philosopher 2 picks up 0x7b1400000028 first and 0x7b1400000000 second and life = 1
-number of philosophers=2
+fork number 103 address is 0x7b8800001018
+fork number 104 address is 0x7b8800001040
+fork number 105 address is 0x7b8800001068
+fork number 106 address is 0x7b8800001090
+fork number 107 address is 0x7b88000010b8
+fork number 108 address is 0x7b88000010e0
+fork number 109 address is 0x7b8800001108
+fork number 110 address is 0x7b8800001130
+fork number 111 address is 0x7b8800001158
+fork number 112 address is 0x7b8800001180
+fork number 113 address is 0x7b88000011a8
+fork number 114 address is 0x7b88000011d0
+fork number 115 address is 0x7b88000011f8
+fork number 116 address is 0x7b8800001220
+fork number 117 address is 0x7b8800001248
+fork number 118 address is 0x7b8800001270
+fork number 119 address is 0x7b8800001298
+fork number 120 address is 0x7b88000012c0
+fork number 121 address is 0x7b88000012e8
+fork number 122 address is 0x7b8800001310
+fork number 123 address is 0x7b8800001338
+fork number 124 address is 0x7b8800001360
+fork number 125 address is 0x7b8800001388
+fork number 126 address is 0x7b88000013b0
+fork number 127 address is 0x7b88000013d8
+fork number 128 address is 0x7b8800001400
+fork number 129 address is 0x7b8800001428
+fork number 130 address is 0x7b8800001450
+fork number 131 address is 0x7b8800001478
+fork number 132 address is 0x7b88000014a0
+fork number 133 address is 0x7b88000014c8
+fork number 134 address is 0x7b88000014f0
+fork number 135 address is 0x7b8800001518
+fork number 136 address is 0x7b8800001540
+fork number 137 address is 0x7b8800001568
+fork number 138 address is 0x7b8800001590
+fork number 139 address is 0x7b88000015b8
+fork number 140 address is 0x7b88000015e0
+fork number 141 address is 0x7b8800001608
+fork number 142 address is 0x7b8800001630
+fork number 143 address is 0x7b8800001658
+fork number 144 address is 0x7b8800001680
+fork number 145 address is 0x7b88000016a8
+fork number 146 address is 0x7b88000016d0
+fork number 147 address is 0x7b88000016f8
+fork number 148 address is 0x7b8800001720
+fork number 149 address is 0x7b8800001748
+philosopher 1 picks up 0x7b8800000028 first and 0x7b8800000000 second and life = 1
+philosopher 2 picks up 0x7b8800000028 first and 0x7b8800000050 second and life = 1
+philosopher 3 picks up 0x7b8800000078 first and 0x7b8800000050 second and life = 1
+philosopher 4 picks up 0x7b8800000078 first and 0x7b88000000a0 second and life = 1
+philosopher 5 picks up 0x7b88000000c8 first and 0x7b88000000a0 second and life = 1
+philosopher 6 picks up 0x7b88000000c8 first and 0x7b88000000f0 second and life = 1
+philosopher 7 picks up 0x7b8800000118 first and 0x7b88000000f0 second and life = 1
+philosopher 8 picks up 0x7b8800000118 first and 0x7b8800000140 second and life = 1
+philosopher 9 picks up 0x7b8800000168 first and 0x7b8800000140 second and life = 1
+philosopher 10 picks up 0x7b8800000168 first and 0x7b8800000190 second and life = 1
+philosopher 11 picks up 0x7b88000001b8 first and 0x7b8800000190 second and life = 1
+philosopher 12 picks up 0x7b88000001b8 first and 0x7b88000001e0 second and life = 1
+philosopher 13 picks up 0x7b8800000208 first and 0x7b88000001e0 second and life = 1
+philosopher 14 picks up 0x7b8800000208 first and 0x7b8800000230 second and life = 1
+philosopher 15 picks up 0x7b8800000258 first and 0x7b8800000230 second and life = 1
+philosopher 16 picks up 0x7b8800000258 first and 0x7b8800000280 second and life = 1
+philosopher 17 picks up 0x7b88000002a8 first and 0x7b8800000280 second and life = 1
+philosopher 18 picks up 0x7b88000002a8 first and 0x7b88000002d0 second and life = 1
+philosopher 19 picks up 0x7b88000002f8 first and 0x7b88000002d0 second and life = 1
+philosopher 20 picks up 0x7b88000002f8 first and 0x7b8800000320 second and life = 1
+philosopher 21 picks up 0x7b8800000348 first and 0x7b8800000320 second and life = 1
+philosopher 22 picks up 0x7b8800000348 first and 0x7b8800000370 second and life = 1
+philosopher 23 picks up 0x7b8800000398 first and 0x7b8800000370 second and life = 1
+philosopher 24 picks up 0x7b8800000398 first and 0x7b88000003c0 second and life = 1
+philosopher 25 picks up 0x7b88000003e8 first and 0x7b88000003c0 second and life = 1
+philosopher 26 picks up 0x7b88000003e8 first and 0x7b8800000410 second and life = 1
+philosopher 27 picks up 0x7b8800000438 first and 0x7b8800000410 second and life = 1
+philosopher 28 picks up 0x7b8800000438 first and 0x7b8800000460 second and life = 1
+philosopher 29 picks up 0x7b8800000488 first and 0x7b8800000460 second and life = 1
+philosopher 30 picks up 0x7b8800000488 first and 0x7b88000004b0 second and life = 1
+philosopher 31 picks up 0x7b88000004d8 first and 0x7b88000004b0 second and life = 1
+philosopher 32 picks up 0x7b88000004d8 first and 0x7b8800000500 second and life = 1
+philosopher 33 picks up 0x7b8800000528 first and 0x7b8800000500 second and life = 1
+philosopher 34 picks up 0x7b8800000528 first and 0x7b8800000550 second and life = 1
+philosopher 35 picks up 0x7b8800000578 first and 0x7b8800000550 second and life = 1
+philosopher 36 picks up 0x7b8800000578 first and 0x7b88000005a0 second and life = 1
+philosopher 37 picks up 0x7b88000005c8 first and 0x7b88000005a0 second and life = 1
+philosopher 38 picks up 0x7b88000005c8 first and 0x7b88000005f0 second and life = 1
+philosopher 39 picks up 0x7b8800000618 first and 0x7b88000005f0 second and life = 1
+philosopher 40 picks up 0x7b8800000618 first and 0x7b8800000640 second and life = 1
+philosopher 41 picks up 0x7b8800000668 first and 0x7b8800000640 second and life = 1
+philosopher 42 picks up 0x7b8800000668 first and 0x7b8800000690 second and life = 1
+philosopher 43 picks up 0x7b88000006b8 first and 0x7b8800000690 second and life = 1
+philosopher 44 picks up 0x7b88000006b8 first and 0x7b88000006e0 second and life = 1
+philosopher 45 picks up 0x7b8800000708 first and 0x7b88000006e0 second and life = 1
+philosopher 46 picks up 0x7b8800000708 first and 0x7b8800000730 second and life = 1
+philosopher 47 picks up 0x7b8800000758 first and 0x7b8800000730 second and life = 1
+philosopher 48 picks up 0x7b8800000758 first and 0x7b8800000780 second and life = 1
+philosopher 49 picks up 0x7b88000007a8 first and 0x7b8800000780 second and life = 1
+philosopher 50 picks up 0x7b88000007a8 first and 0x7b88000007d0 second and life = 1
+philosopher 51 picks up 0x7b88000007f8 first and 0x7b88000007d0 second and life = 1
+philosopher 52 picks up 0x7b88000007f8 first and 0x7b8800000820 second and life = 1
+philosopher 53 picks up 0x7b8800000848 first and 0x7b8800000820 second and life = 1
+philosopher 54 picks up 0x7b8800000848 first and 0x7b8800000870 second and life = 1
+philosopher 55 picks up 0x7b8800000898 first and 0x7b8800000870 second and life = 1
+philosopher 56 picks up 0x7b8800000898 first and 0x7b88000008c0 second and life = 1
+philosopher 57 picks up 0x7b88000008e8 first and 0x7b88000008c0 second and life = 1
+philosopher 58 picks up 0x7b88000008e8 first and 0x7b8800000910 second and life = 1
+philosopher 59 picks up 0x7b8800000938 first and 0x7b8800000910 second and life = 1
+philosopher 60 picks up 0x7b8800000938 first and 0x7b8800000960 second and life = 1
+philosopher 61 picks up 0x7b8800000988 first and 0x7b8800000960 second and life = 1
+philosopher 62 picks up 0x7b8800000988 first and 0x7b88000009b0 second and life = 1
+philosopher 63 picks up 0x7b88000009d8 first and 0x7b88000009b0 second and life = 1
+philosopher 64 picks up 0x7b88000009d8 first and 0x7b8800000a00 second and life = 1
+philosopher 65 picks up 0x7b8800000a28 first and 0x7b8800000a00 second and life = 1
+philosopher 66 picks up 0x7b8800000a28 first and 0x7b8800000a50 second and life = 1
+philosopher 67 picks up 0x7b8800000a78 first and 0x7b8800000a50 second and life = 1
+philosopher 68 picks up 0x7b8800000a78 first and 0x7b8800000aa0 second and life = 1
+philosopher 69 picks up 0x7b8800000ac8 first and 0x7b8800000aa0 second and life = 1
+philosopher 70 picks up 0x7b8800000ac8 first and 0x7b8800000af0 second and life = 1
+philosopher 71 picks up 0x7b8800000b18 first and 0x7b8800000af0 second and life = 1
+philosopher 72 picks up 0x7b8800000b18 first and 0x7b8800000b40 second and life = 1
+philosopher 73 picks up 0x7b8800000b68 first and 0x7b8800000b40 second and life = 1
+philosopher 74 picks up 0x7b8800000b68 first and 0x7b8800000b90 second and life = 1
+philosopher 75 picks up 0x7b8800000bb8 first and 0x7b8800000b90 second and life = 1
+philosopher 76 picks up 0x7b8800000bb8 first and 0x7b8800000be0 second and life = 1
+philosopher 77 picks up 0x7b8800000c08 first and 0x7b8800000be0 second and life = 1
+philosopher 78 picks up 0x7b8800000c08 first and 0x7b8800000c30 second and life = 1
+philosopher 79 picks up 0x7b8800000c58 first and 0x7b8800000c30 second and life = 1
+philosopher 80 picks up 0x7b8800000c58 first and 0x7b8800000c80 second and life = 1
+philosopher 81 picks up 0x7b8800000ca8 first and 0x7b8800000c80 second and life = 1
+philosopher 82 picks up 0x7b8800000ca8 first and 0x7b8800000cd0 second and life = 1
+philosopher 83 picks up 0x7b8800000cf8 first and 0x7b8800000cd0 second and life = 1
+philosopher 84 picks up 0x7b8800000cf8 first and 0x7b8800000d20 second and life = 1
+philosopher 85 picks up 0x7b8800000d48 first and 0x7b8800000d20 second and life = 1
+philosopher 86 picks up 0x7b8800000d48 first and 0x7b8800000d70 second and life = 1
+philosopher 87 picks up 0x7b8800000d98 first and 0x7b8800000d70 second and life = 1
+philosopher 88 picks up 0x7b8800000d98 first and 0x7b8800000dc0 second and life = 1
+philosopher 89 picks up 0x7b8800000de8 first and 0x7b8800000dc0 second and life = 1
+philosopher 90 picks up 0x7b8800000de8 first and 0x7b8800000e10 second and life = 1
+philosopher 91 picks up 0x7b8800000e38 first and 0x7b8800000e10 second and life = 1
+philosopher 92 picks up 0x7b8800000e38 first and 0x7b8800000e60 second and life = 1
+philosopher 93 picks up 0x7b8800000e88 first and 0x7b8800000e60 second and life = 1
+philosopher 94 picks up 0x7b8800000e88 first and 0x7b8800000eb0 second and life = 1
+philosopher 95 picks up 0x7b8800000ed8 first and 0x7b8800000eb0 second and life = 1
+philosopher 96 picks up 0x7b8800000ed8 first and 0x7b8800000f00 second and life = 1
+philosopher 97 picks up 0x7b8800000f28 first and 0x7b8800000f00 second and life = 1
+philosopher 98 picks up 0x7b8800000f28 first and 0x7b8800000f50 second and life = 1
+philosopher 99 picks up 0x7b8800000f78 first and 0x7b8800000f50 second and life = 1
+philosopher 100 picks up 0x7b8800000f78 first and 0x7b8800000fa0 second and life = 1
+philosopher 101 picks up 0x7b8800000fc8 first and 0x7b8800000fa0 second and life = 1
+philosopher 102 picks up 0x7b8800000fc8 first and 0x7b8800000ff0 second and life = 1
+philosopher 103 picks up 0x7b8800001018 first and 0x7b8800000ff0 second and life = 1
+philosopher 104 picks up 0x7b8800001018 first and 0x7b8800001040 second and life = 1
+philosopher 105 picks up 0x7b8800001068 first and 0x7b8800001040 second and life = 1
+philosopher 106 picks up 0x7b8800001068 first and 0x7b8800001090 second and life = 1
+philosopher 107 picks up 0x7b88000010b8 first and 0x7b8800001090 second and life = 1
+philosopher 108 picks up 0x7b88000010b8 first and 0x7b88000010e0 second and life = 1
+philosopher 109 picks up 0x7b8800001108 first and 0x7b88000010e0 second and life = 1
+philosopher 110 picks up 0x7b8800001108 first and 0x7b8800001130 second and life = 1
+philosopher 111 picks up 0x7b8800001158 first and 0x7b8800001130 second and life = 1
+philosopher 112 picks up 0x7b8800001158 first and 0x7b8800001180 second and life = 1
+philosopher 113 picks up 0x7b88000011a8 first and 0x7b8800001180 second and life = 1
+philosopher 114 picks up 0x7b88000011a8 first and 0x7b88000011d0 second and life = 1
+philosopher 115 picks up 0x7b88000011f8 first and 0x7b88000011d0 second and life = 1
+philosopher 116 picks up 0x7b88000011f8 first and 0x7b8800001220 second and life = 1
+philosopher 117 picks up 0x7b8800001248 first and 0x7b8800001220 second and life = 1
+philosopher 118 picks up 0x7b8800001248 first and 0x7b8800001270 second and life = 1
+philosopher 119 picks up 0x7b8800001298 first and 0x7b8800001270 second and life = 1
+philosopher 120 picks up 0x7b8800001298 first and 0x7b88000012c0 second and life = 1
+philosopher 121 picks up 0x7b88000012e8 first and 0x7b88000012c0 second and life = 1
+philosopher 122 picks up 0x7b88000012e8 first and 0x7b8800001310 second and life = 1
+philosopher 123 picks up 0x7b8800001338 first and 0x7b8800001310 second and life = 1
+philosopher 124 picks up 0x7b8800001338 first and 0x7b8800001360 second and life = 1
+philosopher 125 picks up 0x7b8800001388 first and 0x7b8800001360 second and life = 1
+philosopher 126 picks up 0x7b8800001388 first and 0x7b88000013b0 second and life = 1
+philosopher 127 picks up 0x7b88000013d8 first and 0x7b88000013b0 second and life = 1
+philosopher 128 picks up 0x7b88000013d8 first and 0x7b8800001400 second and life = 1
+philosopher 129 picks up 0x7b8800001428 first and 0x7b8800001400 second and life = 1
+philosopher 130 picks up 0x7b8800001428 first and 0x7b8800001450 second and life = 1
+philosopher 131 picks up 0x7b8800001478 first and 0x7b8800001450 second and life = 1
+philosopher 132 picks up 0x7b8800001478 first and 0x7b88000014a0 second and life = 1
+philosopher 133 picks up 0x7b88000014c8 first and 0x7b88000014a0 second and life = 1
+philosopher 134 picks up 0x7b88000014c8 first and 0x7b88000014f0 second and life = 1
+philosopher 135 picks up 0x7b8800001518 first and 0x7b88000014f0 second and life = 1
+philosopher 136 picks up 0x7b8800001518 first and 0x7b8800001540 second and life = 1
+philosopher 137 picks up 0x7b8800001568 first and 0x7b8800001540 second and life = 1
+philosopher 138 picks up 0x7b8800001568 first and 0x7b8800001590 second and life = 1
+philosopher 139 picks up 0x7b88000015b8 first and 0x7b8800001590 second and life = 1
+philosopher 140 picks up 0x7b88000015b8 first and 0x7b88000015e0 second and life = 1
+philosopher 141 picks up 0x7b8800001608 first and 0x7b88000015e0 second and life = 1
+philosopher 142 picks up 0x7b8800001608 first and 0x7b8800001630 second and life = 1
+philosopher 143 picks up 0x7b8800001658 first and 0x7b8800001630 second and life = 1
+philosopher 144 picks up 0x7b8800001658 first and 0x7b8800001680 second and life = 1
+philosopher 145 picks up 0x7b88000016a8 first and 0x7b8800001680 second and life = 1
+philosopher 146 picks up 0x7b88000016a8 first and 0x7b88000016d0 second and life = 1
+philosopher 147 picks up 0x7b88000016f8 first and 0x7b88000016d0 second and life = 1
+philosopher 148 picks up 0x7b88000016f8 first and 0x7b8800001720 second and life = 1
+philosopher 149 picks up 0x7b8800001748 first and 0x7b8800001720 second and life = 1
+philosopher 150 picks up 0x7b8800001748 first and 0x7b8800000000 second and life = 1
+number of philosophers=150
 time to die=310ms
-time to eat=50ms
+time to eat=170ms
 time to sleep=140ms
-max meals=10
+max meals=-1
 ---------------------
-2ms 1 has taken a fork
-2ms 1 has taken a fork
-2ms 1 is eating
-	52ms 1 has dropped a fork
-	52ms 1 has dropped a fork
-52ms 1 is sleeping
-52ms 2 has taken a fork
-52ms 2 has taken a fork
-52ms 2 is eating
-	102ms 2 has dropped a fork
-	102ms 2 has dropped a fork
-102ms 2 is sleeping
-192ms 1 is thinking
-192ms 1 has taken a fork
-192ms 1 has taken a fork
-192ms 1 is eating
-	242ms 1 has dropped a fork
-	242ms 1 has dropped a fork
-242ms 2 is thinking
-242ms 1 is sleeping
-242ms 2 has taken a fork
-242ms 2 has taken a fork
-242ms 2 is eating
-	293ms 2 has dropped a fork
-	293ms 2 has dropped a fork
-293ms 2 is sleeping
-382ms 1 is thinking
-382ms 1 has taken a fork
-382ms 1 has taken a fork
-382ms 1 is eating
-	432ms 1 has dropped a fork
-	432ms 1 has dropped a fork
-432ms 1 is sleeping
-433ms 2 is thinking
-433ms 2 has taken a fork
-433ms 2 has taken a fork
-433ms 2 is eating
-	483ms 2 has dropped a fork
-	483ms 2 has dropped a fork
-483ms 2 is sleeping
-572ms 1 is thinking
-572ms 1 has taken a fork
-572ms 1 has taken a fork
-572ms 1 is eating
-	622ms 1 has dropped a fork
-	622ms 1 has dropped a fork
-622ms 1 is sleeping
-623ms 2 is thinking
-623ms 2 has taken a fork
-623ms 2 has taken a fork
-623ms 2 is eating
-	673ms 2 has dropped a fork
-	673ms 2 has dropped a fork
-673ms 2 is sleeping
-762ms 1 is thinking
-762ms 1 has taken a fork
-762ms 1 has taken a fork
-762ms 1 is eating
-	812ms 1 has dropped a fork
-	812ms 1 has dropped a fork
-812ms 1 is sleeping
-813ms 2 is thinking
-813ms 2 has taken a fork
-813ms 2 has taken a fork
-813ms 2 is eating
-	863ms 2 has dropped a fork
-	863ms 2 has dropped a fork
-863ms 2 is sleeping
-952ms 1 is thinking
-952ms 1 has taken a fork
-952ms 1 has taken a fork
-952ms 1 is eating
-	1002ms 1 has dropped a fork
-	1002ms 1 has dropped a fork
-1002ms 1 is sleeping
-1003ms 2 is thinking
-1003ms 2 has taken a fork
-1003ms 2 has taken a fork
-1003ms 2 is eating
-	1053ms 2 has dropped a fork
-	1053ms 2 has dropped a fork
-1053ms 2 is sleeping
-1142ms 1 is thinking
-1142ms 1 has taken a fork
-1142ms 1 has taken a fork
-1142ms 1 is eating
-	1192ms 1 has dropped a fork
-	1192ms 1 has dropped a fork
-1192ms 1 is sleeping
-1193ms 2 is thinking
-1193ms 2 has taken a fork
-1193ms 2 has taken a fork
-1193ms 2 is eating
-	1243ms 2 has dropped a fork
-	1243ms 2 has dropped a fork
-1243ms 2 is sleeping
-1332ms 1 is thinking
-1332ms 1 has taken a fork
-1332ms 1 has taken a fork
-1332ms 1 is eating
-	1382ms 1 has dropped a fork
-	1382ms 1 has dropped a fork
-1382ms 1 is sleeping
-1383ms 2 is thinking
-1383ms 2 has taken a fork
-1383ms 2 has taken a fork
-1383ms 2 is eating
-	1433ms 2 has dropped a fork
-	1433ms 2 has dropped a fork
-1433ms 2 is sleeping
-1522ms 1 is thinking
-1522ms 1 has taken a fork
-1522ms 1 has taken a fork
-1522ms 1 is eating
-	1572ms 1 has dropped a fork
-	1572ms 1 has dropped a fork
-1572ms 1 is sleeping
-1573ms 2 is thinking
-1573ms 2 has taken a fork
-1573ms 2 has taken a fork
-1573ms 2 is eating
-	1623ms 2 has dropped a fork
-	1623ms 2 has dropped a fork
-1623ms 2 is sleeping
-1712ms 1 is thinking
-1712ms 1 has taken a fork
-1712ms 1 has taken a fork
-1712ms 1 is eating
-	1762ms 1 has dropped a fork
-	1762ms 1 has dropped a fork
-1762ms exiting thread 1 meals=10 max_meals=10 life=1
-1763ms 2 is thinking
-1763ms 2 has taken a fork
-1763ms 2 has taken a fork
-1763ms 2 is eating
-	1813ms 2 has dropped a fork
-	1813ms 2 has dropped a fork
-1813ms exiting thread 2 meals=10 max_meals=10 life=1
+9ms 1 has taken a fork
+9ms 1 has taken a fork
+9ms 1 is eating
+15ms 3 has taken a fork
+15ms 3 has taken a fork
+15ms 3 is eating
+17ms 5 has taken a fork
+17ms 5 has taken a fork
+17ms 5 is eating
+23ms 7 has taken a fork
+23ms 7 has taken a fork
+23ms 7 is eating
+30ms 9 has taken a fork
+30ms 9 has taken a fork
+30ms 9 is eating
+32ms 11 has taken a fork
+32ms 11 has taken a fork
+32ms 11 is eating
+34ms 13 has taken a fork
+34ms 13 has taken a fork
+34ms 13 is eating
+36ms 15 has taken a fork
+36ms 15 has taken a fork
+36ms 15 is eating
+37ms 17 has taken a fork
+37ms 17 has taken a fork
+37ms 17 is eating
+45ms 19 has taken a fork
+45ms 19 has taken a fork
+45ms 19 is eating
+47ms 21 has taken a fork
+47ms 21 has taken a fork
+47ms 21 is eating
+49ms 23 has taken a fork
+49ms 23 has taken a fork
+49ms 23 is eating
+51ms 25 has taken a fork
+51ms 25 has taken a fork
+51ms 25 is eating
+54ms 27 has taken a fork
+55ms 27 has taken a fork
+55ms 27 is eating
+60ms 29 has taken a fork
+60ms 29 has taken a fork
+60ms 29 is eating
+67ms 31 has taken a fork
+67ms 31 has taken a fork
+67ms 31 is eating
+72ms 33 has taken a fork
+72ms 33 has taken a fork
+72ms 33 is eating
+74ms 35 has taken a fork
+74ms 35 has taken a fork
+74ms 35 is eating
+77ms 37 has taken a fork
+77ms 37 has taken a fork
+77ms 37 is eating
+80ms 39 has taken a fork
+80ms 39 has taken a fork
+80ms 39 is eating
+82ms 41 has taken a fork
+82ms 41 has taken a fork
+82ms 41 is eating
+84ms 43 has taken a fork
+84ms 43 has taken a fork
+84ms 43 is eating
+86ms 45 has taken a fork
+86ms 45 has taken a fork
+86ms 45 is eating
+87ms 47 has taken a fork
+87ms 47 has taken a fork
+87ms 47 is eating
+89ms 49 has taken a fork
+89ms 49 has taken a fork
+89ms 49 is eating
+93ms 51 has taken a fork
+93ms 51 has taken a fork
+93ms 51 is eating
+97ms 53 has taken a fork
+97ms 53 has taken a fork
+97ms 53 is eating
+99ms 55 has taken a fork
+99ms 55 has taken a fork
+99ms 55 is eating
+101ms 57 has taken a fork
+101ms 57 has taken a fork
+101ms 57 is eating
+103ms 59 has taken a fork
+103ms 59 has taken a fork
+103ms 59 is eating
+105ms 61 has taken a fork
+105ms 61 has taken a fork
+105ms 61 is eating
+107ms 63 has taken a fork
+107ms 63 has taken a fork
+107ms 63 is eating
+108ms 65 has taken a fork
+108ms 65 has taken a fork
+108ms 65 is eating
+115ms 67 has taken a fork
+115ms 67 has taken a fork
+115ms 67 is eating
+116ms 69 has taken a fork
+116ms 69 has taken a fork
+116ms 69 is eating
+118ms 71 has taken a fork
+118ms 71 has taken a fork
+118ms 71 is eating
+123ms 73 has taken a fork
+123ms 73 has taken a fork
+123ms 73 is eating
+131ms 75 has taken a fork
+131ms 75 has taken a fork
+131ms 75 is eating
+136ms 77 has taken a fork
+136ms 77 has taken a fork
+136ms 77 is eating
+138ms 79 has taken a fork
+138ms 79 has taken a fork
+138ms 79 is eating
+140ms 81 has taken a fork
+140ms 81 has taken a fork
+140ms 81 is eating
+142ms 83 has taken a fork
+142ms 83 has taken a fork
+142ms 83 is eating
+146ms 85 has taken a fork
+146ms 85 has taken a fork
+146ms 85 is eating
+148ms 87 has taken a fork
+148ms 87 has taken a fork
+148ms 87 is eating
+150ms 89 has taken a fork
+150ms 89 has taken a fork
+150ms 89 is eating
+152ms 91 has taken a fork
+152ms 91 has taken a fork
+152ms 91 is eating
+154ms 93 has taken a fork
+154ms 93 has taken a fork
+155ms 93 is eating
+156ms 95 has taken a fork
+156ms 95 has taken a fork
+156ms 95 is eating
+158ms 97 has taken a fork
+158ms 97 has taken a fork
+158ms 97 is eating
+159ms 99 has taken a fork
+159ms 99 has taken a fork
+159ms 99 is eating
+167ms 101 has taken a fork
+167ms 101 has taken a fork
+167ms 101 is eating
+172ms 103 has taken a fork
+172ms 103 has taken a fork
+172ms 103 is eating
+174ms 105 has taken a fork
+174ms 105 has taken a fork
+174ms 105 is eating
+177ms 107 has taken a fork
+177ms 107 has taken a fork
+177ms 107 is eating
+179ms 1 is sleeping
+179ms 2 has taken a fork
+183ms 109 has taken a fork
+183ms 109 has taken a fork
+183ms 109 is eating
+185ms 3 is sleeping
+185ms 2 has taken a fork
+185ms 2 is eating
+185ms 4 has taken a fork
+186ms 111 has taken a fork
+186ms 111 has taken a fork
+186ms 111 is eating
+187ms 5 is sleeping
+187ms 4 has taken a fork
+187ms 4 is eating
+187ms 6 has taken a fork
+190ms 113 has taken a fork
+190ms 113 has taken a fork
+190ms 113 is eating
+194ms 7 is sleeping
+194ms 6 has taken a fork
+194ms 6 is eating
+194ms 8 has taken a fork
+200ms 9 is sleeping
+200ms 8 has taken a fork
+200ms 8 is eating
+201ms 10 has taken a fork
+201ms 115 has taken a fork
+201ms 115 has taken a fork
+201ms 115 is eating
+202ms 11 is sleeping
+203ms 12 has taken a fork
+203ms 10 has taken a fork
+203ms 10 is eating
+204ms 13 is sleeping
+204ms 12 has taken a fork
+204ms 12 is eating
+204ms 14 has taken a fork
+205ms 117 has taken a fork
+205ms 117 has taken a fork
+205ms 117 is eating
+206ms 15 is sleeping
+206ms 16 has taken a fork
+206ms 14 has taken a fork
+206ms 14 is eating
+207ms 119 has taken a fork
+207ms 119 has taken a fork
+207ms 119 is eating
+208ms 17 is sleeping
+208ms 16 has taken a fork
+208ms 16 is eating
+208ms 18 has taken a fork
+209ms 121 has taken a fork
+209ms 121 has taken a fork
+209ms 121 is eating
+211ms 123 has taken a fork
+211ms 123 has taken a fork
+211ms 123 is eating
+214ms 125 has taken a fork
+214ms 125 has taken a fork
+214ms 125 is eating
+215ms 19 is sleeping
+215ms 18 has taken a fork
+215ms 20 has taken a fork
+215ms 18 is eating
+216ms 127 has taken a fork
+216ms 127 has taken a fork
+216ms 127 is eating
+217ms 21 is sleeping
+217ms 20 has taken a fork
+217ms 22 has taken a fork
+218ms 20 is eating
+223ms 25 is sleeping
+223ms 26 has taken a fork
+225ms 27 is sleeping
+225ms 26 has taken a fork
+225ms 28 has taken a fork
+225ms 26 is eating
+226ms 23 is sleeping
+226ms 22 has taken a fork
+226ms 22 is eating
+226ms 24 has taken a fork
+226ms 24 has taken a fork
+226ms 24 is eating
+230ms 29 is sleeping
+230ms 28 has taken a fork
+230ms 28 is eating
+230ms 30 has taken a fork
+237ms 31 is sleeping
+237ms 32 has taken a fork
+237ms 30 has taken a fork
+237ms 30 is eating
+242ms 33 is sleeping
+243ms 34 has taken a fork
+243ms 129 has taken a fork
+243ms 32 has taken a fork
+243ms 32 is eating
+243ms 129 has taken a fork
+243ms 129 is eating
+244ms 35 is sleeping
+244ms 34 has taken a fork
+244ms 34 is eating
+244ms 36 has taken a fork
+247ms 37 is sleeping
+247ms 36 has taken a fork
+247ms 36 is eating
+247ms 38 has taken a fork
+250ms 39 is sleeping
+250ms 40 has taken a fork
+250ms 38 has taken a fork
+250ms 38 is eating
+252ms 41 is sleeping
+252ms 40 has taken a fork
+252ms 40 is eating
+252ms 42 has taken a fork
+254ms 43 is sleeping
+254ms 42 has taken a fork
+254ms 42 is eating
+254ms 44 has taken a fork
+256ms 45 is sleeping
+256ms 46 has taken a fork
+256ms 44 has taken a fork
+256ms 44 is eating
+257ms 47 is sleeping
+258ms 48 has taken a fork
+258ms 46 has taken a fork
+258ms 46 is eating
+259ms 49 is sleeping
+259ms 48 has taken a fork
+259ms 50 has taken a fork
+259ms 48 is eating
+260ms 131 has taken a fork
+260ms 131 has taken a fork
+262ms 131 is eating
+264ms 51 is sleeping
+264ms 50 has taken a fork
+264ms 50 is eating
+264ms 52 has taken a fork
+267ms 53 is sleeping
+267ms 52 has taken a fork
+267ms 52 is eating
+267ms 54 has taken a fork
+270ms 55 is sleeping
+270ms 54 has taken a fork
+270ms 56 has taken a fork
+270ms 54 is eating
+271ms 57 is sleeping
+271ms 58 has taken a fork
+271ms 56 has taken a fork
+271ms 56 is eating
+273ms 59 is sleeping
+273ms 58 has taken a fork
+273ms 58 is eating
+273ms 60 has taken a fork
+275ms 61 is sleeping
+275ms 60 has taken a fork
+275ms 60 is eating
+275ms 62 has taken a fork
+275ms 133 has taken a fork
+275ms 133 has taken a fork
+275ms 133 is eating
+277ms 63 is sleeping
+277ms 62 has taken a fork
+277ms 62 is eating
+277ms 64 has taken a fork
+278ms 65 is sleeping
+278ms 66 has taken a fork
+278ms 64 has taken a fork
+279ms 64 is eating
+285ms 67 is sleeping
+285ms 66 has taken a fork
+285ms 66 is eating
+285ms 68 has taken a fork
+287ms 69 is sleeping
+287ms 70 has taken a fork
+287ms 68 has taken a fork
+287ms 68 is eating
+288ms 71 is sleeping
+288ms 72 has taken a fork
+288ms 70 has taken a fork
+288ms 70 is eating
+293ms 73 is sleeping
+293ms 72 has taken a fork
+293ms 74 has taken a fork
+293ms 72 is eating
+301ms 75 is sleeping
+301ms 74 has taken a fork
+301ms 74 is eating
+301ms 76 has taken a fork
+302ms 135 has taken a fork
+302ms 135 has taken a fork
+302ms 135 is eating
+306ms 77 is sleeping
+306ms 78 has taken a fork
+306ms 76 has taken a fork
+306ms 76 is eating
+308ms 79 is sleeping
+308ms 78 has taken a fork
+308ms 78 is eating
+308ms 80 has taken a fork
+310ms 81 is sleeping
+310ms 80 has taken a fork
+310ms 82 has taken a fork
+310ms 80 is eating
+312ms 83 is sleeping
+312ms 82 has taken a fork
+312ms 84 has taken a fork
+312ms 82 is eating
+316ms 85 is sleeping
+316ms 86 has taken a fork
+316ms 84 has taken a fork
+316ms 84 is eating
+318ms 87 is sleeping
+318ms 86 has taken a fork
+318ms 86 is eating
+319ms 1 is thinking
+320ms 89 is sleeping
+322ms 91 is sleeping
+325ms 3 is thinking
+325ms 93 is sleeping
+326ms 95 is sleeping
+327ms 5 is thinking
+328ms 97 is sleeping
+330ms 99 is sleeping
+334ms 7 is thinking
+337ms 101 is sleeping
+341ms 9 is thinking
+342ms 103 is sleeping
+343ms 11 is thinking
+344ms 105 is sleeping
+344ms 13 is thinking
+346ms 15 is thinking
+347ms 107 is sleeping
+348ms 17 is thinking
+354ms 109 is sleeping
+355ms 2 is sleeping
+355ms 1 has taken a fork
+355ms 1 has taken a fork
+355ms 1 is eating
+355ms 19 is thinking
+356ms 111 is sleeping
+357ms 4 is sleeping
+357ms 3 has taken a fork
+357ms 3 has taken a fork
+357ms 3 is eating
+358ms 21 is thinking
+360ms 113 is sleeping
+363ms 25 is thinking
+364ms 6 is sleeping
+364ms 5 has taken a fork
+364ms 5 has taken a fork
+364ms 5 is eating
+365ms 27 is thinking
+366ms 23 is thinking
+370ms 29 is thinking
+371ms 8 is sleeping
+371ms 7 has taken a fork
+371ms 7 has taken a fork
+371ms 7 is eating
+372ms 115 is sleeping
+373ms 10 is sleeping
+373ms 9 has taken a fork
+373ms 9 has taken a fork
+373ms 9 is eating
+374ms 12 is sleeping
+374ms 11 has taken a fork
+374ms 11 has taken a fork
+374ms 11 is eating
+375ms 117 is sleeping
+376ms 137 has taken a fork
+376ms 116 has taken a fork
+376ms 104 has taken a fork
+377ms 116 has taken a fork
+377ms 116 is eating
+377ms 108 has taken a fork
+377ms 108 has taken a fork
+377ms 108 is eating
+377ms 88 has taken a fork
+376ms 14 is sleeping
+377ms 88 has taken a fork
+376ms 110 has taken a fork
+377ms 110 has taken a fork
+377ms 110 is eating
+377ms 90 has taken a fork
+378ms 90 has taken a fork
+378ms 90 is eating
+376ms 13 has taken a fork
+378ms 13 has taken a fork
+378ms 13 is eating
+377ms 112 has taken a fork
+378ms 112 has taken a fork
+378ms 112 is eating
+377ms 104 has taken a fork
+378ms 104 is eating
+377ms 92 has taken a fork
+378ms 92 has taken a fork
+378ms 92 is eating
+376ms 98 has taken a fork
+378ms 98 has taken a fork
+378ms 98 is eating
+376ms 137 has taken a fork
+378ms 137 is eating
+378ms 96 has taken a fork
+378ms 96 has taken a fork
+378ms 96 is eating
+377ms 106 has taken a fork
+379ms 106 has taken a fork
+379ms 106 is eating
+379ms 31 is thinking
+377ms 102 has taken a fork
+376ms 118 has taken a fork
+379ms 102 has taken a fork
+377ms 139 has taken a fork
+379ms 102 is eating
+379ms 16 is sleeping
+379ms 119 is sleeping
+379ms 139 has taken a fork
+379ms 120 has taken a fork
+379ms 118 has taken a fork
+379ms 118 is eating
+379ms 15 has taken a fork
+379ms 15 has taken a fork
+379ms 15 is eating
+376ms 114 has taken a fork
+378ms 88 is eating
+379ms 114 has taken a fork
+379ms 114 is eating
+379ms 139 is eating
+377ms 94 has taken a fork
+379ms 94 has taken a fork
+379ms 94 is eating
+377ms 100 has taken a fork
+379ms 100 has taken a fork
+379ms 100 is eating
+379ms 121 is sleeping
+379ms 120 has taken a fork
+379ms 120 is eating
+379ms 122 has taken a fork
+382ms 123 is sleeping
+382ms 122 has taken a fork
+382ms 122 is eating
+382ms 124 has taken a fork
+383ms 33 is thinking
+384ms 35 is thinking
+384ms 125 is sleeping
+384ms 124 has taken a fork
+385ms 124 is eating
+385ms 126 has taken a fork
+385ms 18 is sleeping
+385ms 17 has taken a fork
+385ms 17 has taken a fork
+385ms 17 is eating
+387ms 127 is sleeping
+387ms 126 has taken a fork
+387ms 141 has taken a fork
+387ms 126 is eating
+387ms 128 has taken a fork
+387ms 141 has taken a fork
+387ms 37 is thinking
+387ms 141 is eating
+388ms 20 is sleeping
+388ms 19 has taken a fork
+388ms 19 has taken a fork
+388ms 19 is eating
+390ms 39 is thinking
+392ms 41 is thinking
+394ms 43 is thinking
+394ms 143 has taken a fork
+394ms 143 has taken a fork
+394ms 143 is eating
+395ms 26 is sleeping
+395ms 25 has taken a fork
+396ms 45 is thinking
+397ms 22 is sleeping
+397ms 23 has taken a fork
+397ms 21 has taken a fork
+397ms 21 has taken a fork
+397ms 23 has taken a fork
+397ms 25 has taken a fork
+397ms 23 is eating
+397ms 21 is eating
+397ms 25 is eating
+397ms 24 is sleeping
+398ms 47 is thinking
+399ms 49 is thinking
+400ms 28 is sleeping
+400ms 27 has taken a fork
+400ms 27 has taken a fork
+400ms 27 is eating
+402ms 145 has taken a fork
+402ms 145 has taken a fork
+402ms 145 is eating
+404ms 51 is thinking
+407ms 53 is thinking
+407ms 30 is sleeping
+407ms 29 has taken a fork
+407ms 29 has taken a fork
+407ms 29 is eating
+410ms 55 is thinking
+411ms 57 is thinking
+413ms 32 is sleeping
+413ms 129 is sleeping
+413ms 31 has taken a fork
+413ms 31 has taken a fork
+413ms 31 is eating
+413ms 130 has taken a fork
+413ms 128 has taken a fork
+413ms 59 is thinking
+413ms 128 is eating
+413ms 147 has taken a fork
+413ms 147 has taken a fork
+413ms 147 is eating
+414ms 34 is sleeping
+414ms 33 has taken a fork
+414ms 33 has taken a fork
+414ms 33 is eating
+415ms 61 is thinking
+417ms 63 is thinking
+417ms 36 is sleeping
+417ms 35 has taken a fork
+417ms 35 has taken a fork
+417ms 35 is eating
+419ms 149 has taken a fork
+419ms 149 has taken a fork
+419ms 149 is eating
+419ms 65 is thinking
+420ms 38 is sleeping
+420ms 37 has taken a fork
+420ms 37 has taken a fork
+421ms 37 is eating
+422ms 40 is sleeping
+422ms 39 has taken a fork
+422ms 39 has taken a fork
+422ms 39 is eating
+424ms 42 is sleeping
+424ms 41 has taken a fork
+424ms 41 has taken a fork
+424ms 41 is eating
+425ms 67 is thinking
+426ms 44 is sleeping
+426ms 43 has taken a fork
+426ms 43 has taken a fork
+426ms 43 is eating
+427ms 69 is thinking
+428ms 46 is sleeping
+430ms 48 is sleeping
+430ms 47 has taken a fork
+430ms 47 has taken a fork
+430ms 47 is eating
+433ms 131 is sleeping
+433ms 71 is thinking
+433ms 132 has taken a fork
+433ms 73 is thinking
+433ms 130 has taken a fork
+433ms 130 is eating
+434ms 50 is sleeping
+434ms 49 has taken a fork
+434ms 49 has taken a fork
+434ms 49 is eating
+434ms 45 has taken a fork
+434ms 45 has taken a fork
+434ms 45 is eating
+437ms 52 is sleeping
+437ms 51 has taken a fork
+437ms 51 has taken a fork
+437ms 51 is eating
+440ms 54 is sleeping
+440ms 53 has taken a fork
+440ms 53 has taken a fork
+440ms 53 is eating
+441ms 75 is thinking
+442ms 56 is sleeping
+442ms 55 has taken a fork
+442ms 55 has taken a fork
+442ms 55 is eating
+443ms 58 is sleeping
+443ms 57 has taken a fork
+443ms 57 has taken a fork
+443ms 57 is eating
+445ms 60 is sleeping
+445ms 59 has taken a fork
+445ms 59 has taken a fork
+445ms 59 is eating
+445ms 133 is sleeping
+445ms 132 has taken a fork
+445ms 132 is eating
+445ms 134 has taken a fork
+446ms 77 is thinking
+447ms 61 has taken a fork
+447ms 61 has taken a fork
+447ms 61 is eating
+447ms 62 is sleeping
+448ms 79 is thinking
+449ms 64 is sleeping
+449ms 63 has taken a forkf
+449ms 63 has taken a fork
+449ms 63 is eating
+450ms 81 is thinking
+451ms 65 died

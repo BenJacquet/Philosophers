@@ -8,7 +8,7 @@ INCS = incs/philo.h
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -pthread -fsanitize=thread
+CFLAGS = -Wall -Werror -Wextra -pthread #-fsanitize=thread
 
 OBJS = $(SRCS:.c=.o)
 
@@ -35,12 +35,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@echo "$(_YELLOW)Deleting object files$(_WHITE)"
-	rm -f $(OBS)
+	rm -rf $(OBJS)
 	@echo "$(_GREEN)Deleted object files$(_WHITE)"
 
 fclean: clean
 	@echo "$(_YELLOW)Deleting binary$(_WHITE)"
-	rm -f $(NAME)
+	rm -rf $(NAME)
 	@echo "$(_GREEN)Deleted binary$(_WHITE)"
 
 re : fclean all

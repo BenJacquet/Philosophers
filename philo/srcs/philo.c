@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/12 14:27:47 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/12 15:52:33 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,45 +149,60 @@ void	initialization(t_data *data, struct timeval start)
 	print_data(data);
 }
 
-int	action(t_philo *philo, int code)
+void	print_action(const char *action, t_philo *philo, int meal)
 {
-	int	ret;
-
-	ret = 1;
+	pthread_mutex_lock(&philo->active);
+	if (meal == 1)
+	{
+		gettimeofday(&philo->last_meal, NULL);
+		philo->meals++;
+	}
 	pthread_mutex_lock(&philo->alive);
 	if (philo->life == 1)
+		printf(action, timestamp(philo->start), philo->id);
+	pthread_mutex_unlock(&philo->alive);
+	pthread_mutex_unlock(&philo->active);
+}
+
+void	end_philo(t_philo *philo, int code)
+{
+	if (code == 1)
+		pthread_mutex_unlock(philo->first);
+	else if (code == 2 || code == 3)
+	{
+		pthread_mutex_unlock(philo->first);
+		pthread_mutex_unlock(philo->second);
+	}
+}
+
+int	action(t_philo *philo, int code)
+{
+	pthread_mutex_lock(&philo->alive);
+	if (philo->life == 0)
+	{
+		pthread_mutex_unlock(&philo->alive);
+		end_philo(philo, code);
+		return (1);
+	}
+	else
 	{
 		pthread_mutex_unlock(&philo->alive);
 		if (code == 1)
-			printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
+			print_action("%lums %d has taken a fork\n", philo, 0);
 		else if (code == 2)
 		{
-			pthread_mutex_lock(&philo->active);
-			gettimeofday(&philo->last_meal, NULL);
-			printf("%lums %d is eating\n", timestamp(philo->start), philo->id);
-			philo->meals++;
-			pthread_mutex_unlock(&philo->active);
+			print_action("%lums %d is eating\n", philo, 1);
 			usleep(philo->eat * 1000);
 		}
 		else if (code == 3)
 		{
-			pthread_mutex_lock(&philo->active);
-			printf("%lums %d is sleeping\n", timestamp(philo->start), philo->id);
-			pthread_mutex_unlock(&philo->active);
+			print_action("%lums %d is sleeping\n", philo, 0);
 			usleep(philo->sleep * 1000);
 		}
 		else
-			printf("%lums %d is thinking\n", timestamp(philo->start), philo->id);
-		ret = 0;
+			print_action("%lums %d is thinking\n", philo, 0);
+		return (0);
 	}
-	// else
-	// 	printf("%lums %d died\n", timestamp(philo->start), philo->id);
-	else if (philo->died == 1)
-	{
-		printf("%lums %d died\n", timestamp(philo->start), philo->id);
-		pthread_mutex_unlock(&philo->alive);
-	}
-	return (ret);
 }
 
 void	*routine(void *v_philo)
@@ -199,34 +214,26 @@ void	*routine(void *v_philo)
 	{
 		pthread_mutex_lock(philo->first);
 		if (action(philo, 1) == 1)
-		{
-			pthread_mutex_unlock(philo->first);
-			break ;
-		}
+			return (NULL);
 		pthread_mutex_lock(philo->second);
 		if (action(philo, 1) == 1)
-		{
-			pthread_mutex_unlock(philo->first);
-			pthread_mutex_unlock(philo->second);
-			break ;
-		}
+			return (NULL);
 		if (action(philo, 2) == 1)
-			break ;
+			return (NULL);
 		pthread_mutex_unlock(philo->first);
 		pthread_mutex_unlock(philo->second);
 		pthread_mutex_lock(&philo->alive);
 		if ((philo->meals == philo->max_meals && philo->max_meals != -1) || philo->life == 0)
 		{
 			pthread_mutex_unlock(&philo->alive);
-			break ;
+			return (NULL);
 		}
 		pthread_mutex_unlock(&philo->alive);
 		if (action(philo, 3) == 1)
-			break ;
+			return (NULL);
 		if (action(philo, 4) == 1)
-			break ;
+			return (NULL);
 	}
-	return ((void*)0);
 }
 
 void	death(t_data *data, int first)
@@ -245,6 +252,9 @@ void	death(t_data *data, int first)
 		i++;
 	}
 }
+
+void	end()
+{}
 
 void	*supervisor(void *v_data)
 {
@@ -268,6 +278,7 @@ void	*supervisor(void *v_data)
 			{
 				pthread_mutex_unlock(&data->philo[i].alive);
 				death(data, i);
+				printf("%lums %d died\n", timestamp(data->philo[i].start), data->philo[i].id);
 				pthread_mutex_unlock(&data->philo[i].active);
 				return (NULL);
 			}
@@ -289,10 +300,11 @@ void	launch_philos(t_data *data)
 	{
 		pthread_create(&data->philo[i].thread, NULL, routine, &data->philo[i]);
 		pthread_detach(data->philo[i++].thread);
-		usleep(300);
+		usleep(10);
 	}
 	pthread_create(&reaper, NULL, supervisor, data);
 	pthread_join(reaper, NULL);
+	end();
 }
 
 int	core(int ac, char **av)
