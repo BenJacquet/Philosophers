@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/11 16:44:53 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:27:47 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@
 
 // ms = s * 1000 et us / 1000
 
-unsigned long	timestamp(struct timeval time)
+unsigned long	timestamp(struct timeval start)
 {
 	struct timeval	current;
 	unsigned long	stamp;
 
 	gettimeofday(&current, NULL);
 	stamp = ((current.tv_sec * 1000) + (current.tv_usec / 1000))
-		- ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+		- ((start.tv_sec * 1000) + (start.tv_usec / 1000));
 	return (stamp);
 }
 
@@ -112,15 +112,6 @@ unsigned long	gettime(void)
 	gettimeofday(&current, NULL);
 	time = (current.tv_sec * 1000) + (current.tv_usec / 1000);
 	return (time);
-}
-
-void	ft_mssleep(unsigned long ms)
-{
-	struct timeval	current;
-
-	gettimeofday(&current, NULL);
-	while (timestamp(current) < ms)
-		usleep(100);
 }
 
 void	initialization(t_data *data, struct timeval start)
@@ -168,11 +159,7 @@ int	action(t_philo *philo, int code)
 	{
 		pthread_mutex_unlock(&philo->alive);
 		if (code == 1)
-		{
-			pthread_mutex_lock(&philo->active);
 			printf("%lums %d has taken a fork\n", timestamp(philo->start), philo->id);
-			pthread_mutex_unlock(&philo->active);
-		}
 		else if (code == 2)
 		{
 			pthread_mutex_lock(&philo->active);
@@ -180,25 +167,26 @@ int	action(t_philo *philo, int code)
 			printf("%lums %d is eating\n", timestamp(philo->start), philo->id);
 			philo->meals++;
 			pthread_mutex_unlock(&philo->active);
-			ft_mssleep(philo->eat);
+			usleep(philo->eat * 1000);
 		}
 		else if (code == 3)
 		{
 			pthread_mutex_lock(&philo->active);
 			printf("%lums %d is sleeping\n", timestamp(philo->start), philo->id);
 			pthread_mutex_unlock(&philo->active);
-			ft_mssleep(philo->sleep);
+			usleep(philo->sleep * 1000);
 		}
 		else
-		{
-			pthread_mutex_lock(&philo->active);
 			printf("%lums %d is thinking\n", timestamp(philo->start), philo->id);
-			pthread_mutex_unlock(&philo->active);
-		}
 		ret = 0;
 	}
-	else
+	// else
+	// 	printf("%lums %d died\n", timestamp(philo->start), philo->id);
+	else if (philo->died == 1)
+	{
+		printf("%lums %d died\n", timestamp(philo->start), philo->id);
 		pthread_mutex_unlock(&philo->alive);
+	}
 	return (ret);
 }
 
@@ -241,11 +229,14 @@ void	*routine(void *v_philo)
 	return ((void*)0);
 }
 
-void	death(t_data *data)
+void	death(t_data *data, int first)
 {
 	int	i;
 
 	i = 0;
+	pthread_mutex_lock(&data->philo[i].alive);
+	data->philo[first].died = 1;
+	pthread_mutex_unlock(&data->philo[i].alive);
 	while (i < data->nb)
 	{
 		pthread_mutex_lock(&data->philo[i].alive);
@@ -272,14 +263,15 @@ void	*supervisor(void *v_data)
 				pthread_mutex_unlock(&data->philo[i].active);
 				return (NULL);
 			}
-			if (timestamp(data->philo[i].last_meal) >= (unsigned long)data->philo[i].die)
+			pthread_mutex_lock(&data->philo[i].alive);
+			if (timestamp(data->philo[i].last_meal) >= (unsigned long)data->philo[i].die || data->philo[i].life == 0)
 			{
-				// printf("timestamp_last_meal=%ld timestamp_start=%ld\n", timestamp(data->philo[i].last_meal), timestamp(data->philo[i].start));
-				death(data);
-				printf("%lums %d has died\n", timestamp(data->philo[i].start), data->philo[i].id);
+				pthread_mutex_unlock(&data->philo[i].alive);
+				death(data, i);
 				pthread_mutex_unlock(&data->philo[i].active);
 				return (NULL);
 			}
+			pthread_mutex_unlock(&data->philo[i].alive);
 			pthread_mutex_unlock(&data->philo[i].active);
 			i++;
 		}
@@ -297,6 +289,7 @@ void	launch_philos(t_data *data)
 	{
 		pthread_create(&data->philo[i].thread, NULL, routine, &data->philo[i]);
 		pthread_detach(data->philo[i++].thread);
+		usleep(300);
 	}
 	pthread_create(&reaper, NULL, supervisor, data);
 	pthread_join(reaper, NULL);

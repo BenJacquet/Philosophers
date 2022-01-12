@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:57:02 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/11 15:58:00 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:15:00 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philo
 	int				meals;
 	int				max_meals;
 	int				life;
+	int				died;
 	struct timeval	start;
 	struct timeval	last_meal;
 	pthread_t		thread;
