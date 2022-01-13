@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:17 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/12 14:15:06 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:42:15 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,15 @@ int	parse_params(int ac, char **av, t_data *data)
 	data->philo = malloc(sizeof(t_philo) * (data->nb + 1));
 	while (i < data->nb)
 	{
+		data->philo[i].nb = data->nb;
 		data->philo[i].id = i + 1;
 		data->philo[i].die = ft_atoi(av[2]);
 		data->philo[i].eat = ft_atoi(av[3]);
 		data->philo[i].sleep = ft_atoi(av[4]);
 		data->philo[i].meals = 0;
 		data->philo[i].max_meals = -1;
-		data->philo[i].died = 0;
-		data->philo[i].life = 1;
+		data->philo[i].stopped = 0;
+		data->philo[i].ended = 0;
 		if (ac == 6)
 			data->philo[i].max_meals = ft_atoi(av[5]);
 		i++;

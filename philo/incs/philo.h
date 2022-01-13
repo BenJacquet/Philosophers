@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:57:02 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/12 14:15:00 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:20:05 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@
 # include <sys/wait.h>
 # include <pthread.h>
 
-// time values are stored in usec
-
 typedef struct s_philo
 {
 	int				id;
+	int				nb;
 	int				die;
 	int				eat;
 	int				sleep;
 	int				meals;
 	int				max_meals;
-	int				life;
-	int				died;
+	int				stopped;
+	int				ended;
 	struct timeval	start;
 	struct timeval	last_meal;
 	pthread_t		thread;
@@ -75,21 +74,5 @@ int		check_params(t_data *data);
 
 int		ft_atoi(const char *str);
 unsigned long	gettime(void);
-
-
-// A implementer :
-
-// create_forks(data *args)
-// init_philos(pthread_mutex_t *forks, data *args)
-// create_philos(pthread_t *philos_t)
-// create_reaper(philo *philos)
-// routine(philo philo[n])
-// ft_sleep(int duration);
-// take_forks()
-// eat()
-// drop_forks()
-// sleep()
-// clean_philos(philo *philos)
-// clean_reaper(philo *reaper)
 
 #endif

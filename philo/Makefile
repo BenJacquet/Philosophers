@@ -14,7 +14,7 @@ OBJS = $(SRCS:.c=.o)
 
 # Colors
 _BLACK = $'\033[30m
-_RED = $'\033[31m
+_RED = s$'\033[31m
 _GREEN = $'\033[32m
 _YELLOW = $'\033[33m
 _BLUE = $'\033[34m
