@@ -1,14 +1,16 @@
 NAME = philo
 
-SRCS = srcs/philo.c \
-	srcs/parsing.c \
+SRCS = srcs/parsing.c \
+	srcs/philo.c \
+	srcs/routine.c \
+	srcs/supervisor.c \
 	srcs/utils.c
 
 INCS = incs/philo.h
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -pthread -fsanitize=thread
+CFLAGS = -Wall -Werror -Wextra -pthread
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:17 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/13 17:42:15 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/14 11:50:38 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 
 void	print_data(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	printf("number of philosophers=%d\n", data->nb);
 	printf("time to die=%dms\n", data->philo[0].die);
 	printf("time to eat=%dms\n", data->philo[0].eat);
 	printf("time to sleep=%dms\n", data->philo[0].sleep);
 	printf("max meals=%d\n---------------------\n", data->philo[0].max_meals);
+	while (i < data->nb)
+	{
+		printf("philosopher %d picks up %p first and %p second and end = %d\n", \
+		data->philo[i].id, data->philo[i].first, data->philo[i].second, \
+		data->philo[i].ended);
+		i++;
+	}
 }
 
 int	check_params(t_data *data)
@@ -30,12 +40,12 @@ int	check_params(t_data *data)
 	else
 		return (0);
 }
+
 int	parse_params(int ac, char **av, t_data *data)
 {
 	int	i;
 
 	i = 0;
-	
 	data->nb = ft_atoi(av[1]);
 	if (data->nb <= 0)
 		return (1);

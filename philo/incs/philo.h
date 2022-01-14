@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:57:02 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/13 17:20:05 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/14 11:40:00 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_philo
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
 	pthread_mutex_t	active;
-	pthread_mutex_t alive;
+	pthread_mutex_t	alive;
 }					t_philo;
 
 typedef struct s_data
@@ -50,29 +50,47 @@ typedef struct s_data
 }				t_data;
 
 /*
-**------DEBUG FUNCTIONS---------------------------------------------------------
-*/
-
-void	print_data(t_data *data);
-
-/*
 **------CORE FUNCTIONS----------------------------------------------------------
 */
 
-int		core(int ac, char **av);
+int				core(int ac, char **av);
+void			launch_philos(t_data *data);
+void			initialization(t_data *data, struct timeval start);
+void			cleanup(t_data *data);
+
+/*
+**------ROUTINE FUNCTIONS-------------------------------------------------------
+*/
+
+void			*wrapper(void *v_philo);
+int				routine(t_philo *philo);
+int				action(t_philo *philo, int code);
+void			print_action(const char *action, t_philo *philo, int code);
+void			end_philo(t_philo *philo, int code);
+
+/*
+**------SUPERVISOR FUNCTIONS----------------------------------------------------
+*/
+
+void			*supervisor(void *v_data);
+int				check_starvation(t_data *data, int i);
+void			end(t_data *data);
+void			stop(t_data *data);
 
 /*
 **------PARSING FUNCTIONS-------------------------------------------------------
 */
 
-int		parse_params(int ac, char **av, t_data *data);
-int		check_params(t_data *data);
+int				parse_params(int ac, char **av, t_data *data);
+int				check_params(t_data *data);
+void			print_data(t_data *data);
 
 /*
 **------UTILITY FUNCTIONS-------------------------------------------------------
 */
 
-int		ft_atoi(const char *str);
 unsigned long	gettime(void);
+unsigned long	timestamp(struct timeval start);
+int				ft_atoi(const char *str);
 
 #endif
