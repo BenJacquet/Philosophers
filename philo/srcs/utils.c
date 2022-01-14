@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:34 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 11:35:28 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:27:44 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	ft_atoi(const char *str)
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
+		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 		result = (result * 10) + (str[i++] - 48);
 	return (result * sign);

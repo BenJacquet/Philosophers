@@ -27,13 +27,12 @@ _WHITE = $'\033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+srcs/philo.o : $(INCS)
+
+$(NAME): $(INCS) $(OBJS) $(SRCS)
 	@echo "$(_CYAN)compiling project Philosophers$(_WHITE)"
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
 	@echo "$(_GREEN)Philosophers project compiled$(_WHITE)"
-
-%.o : %.clean
-	$(CC) $(CFLAGS) -I $(INCS) -o ${<:.c=.o} -c $<
 
 clean:
 	@echo "$(_YELLOW)Deleting object files$(_WHITE)"

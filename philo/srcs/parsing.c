@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:17 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 11:50:38 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:27:41 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	print_data(t_data *data)
 
 int	check_params(t_data *data)
 {
-	if (data->philo[0].die < 0 || data->philo[0].eat < 0
-		|| data->philo[0].sleep < 0
+	if (data->philo[0].die < 1 || data->philo[0].eat < 1
+		|| data->philo[0].sleep < 1
 		|| (data->philo[0].max_meals < 0 && data->philo[0].max_meals != -1))
 		return (1);
 	else

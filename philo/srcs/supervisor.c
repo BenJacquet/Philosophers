@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:25:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 11:38:14 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/14 14:59:18 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,31 @@ int	check_starvation(t_data *data, int i)
 	return (0);
 }
 
+int	check_fullness(t_data *data)
+{
+	int	i;
+	int	full;
+
+	i = 0;
+	full = 0;
+	while (i < data->nb)
+	{
+		pthread_mutex_lock(&data->philo[i].alive);
+		if (data->philo[i].meals == data->philo[i].max_meals
+			&& data->philo[i].max_meals != -1)
+			full++;
+		pthread_mutex_unlock(&data->philo[i].alive);
+		i++;
+	}
+	if (full == data->nb)
+	{
+		stop(data);
+		end(data);
+		return (1);
+	}
+	return (0);
+}
+
 void	*supervisor(void *v_data)
 {
 	t_data	*data;
@@ -78,8 +103,7 @@ void	*supervisor(void *v_data)
 		while (i < data->nb)
 		{
 			pthread_mutex_lock(&data->philo[i].active);
-			if (data->philo[i].meals == data->philo[i].max_meals
-				&& data->philo[i].max_meals != -1)
+			if (check_fullness(data) == 1)
 			{
 				pthread_mutex_unlock(&data->philo[i].active);
 				return (NULL);
