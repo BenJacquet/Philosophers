@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 15:27:47 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/14 17:51:31 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	initialization(t_data *data, struct timeval start)
 	int	i;
 
 	i = 0;
-	data->forks = malloc(sizeof(pthread_mutex_t) * (data->nb + 1));
+	data->forks = malloc(sizeof(pthread_mutex_t) * (data->nb));
 	while (i < data->nb)
 		pthread_mutex_init(&data->forks[i++], NULL);
 	i = 0;

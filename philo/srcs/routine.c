@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:24:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 15:27:45 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/14 17:50:09 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void	end_philo(t_philo *philo, int code)
 
 void	print_action(const char *action, t_philo *philo, int code)
 {
-	pthread_mutex_lock(&philo->active);
 	pthread_mutex_lock(&philo->alive);
+	pthread_mutex_lock(&philo->active);
 	if (code == 3)
 	{
 		gettimeofday(&philo->last_meal, NULL);
 		philo->meals++;
 	}
+	pthread_mutex_unlock(&philo->active);
 	if (philo->stopped == 0)
 		printf(action, timestamp(philo->start), philo->id);
 	pthread_mutex_unlock(&philo->alive);
-	pthread_mutex_unlock(&philo->active);
 	if (code == 3)
 		usleep(philo->eat * 1000);
 	else if (code == 4)
