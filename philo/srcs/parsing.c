@@ -49,7 +49,8 @@ int	parse_params(int ac, char **av, t_data *data)
 	data->nb = ft_atoi(av[1]);
 	if (data->nb <= 0)
 		return (1);
-	data->philo = malloc(sizeof(t_philo) * (data->nb));
+	if ((data->philo = malloc(sizeof(t_philo) * (data->nb))) == NULL)
+		return (1);
 	while (i < data->nb)
 	{
 		data->philo[i].nb = data->nb;
