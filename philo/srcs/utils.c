@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:34 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 15:27:44 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:33:47 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,13 @@ unsigned long	gettime(void)
 	gettimeofday(&current, NULL);
 	time = (current.tv_sec * 1000) + (current.tv_usec / 1000);
 	return (time);
+}
+
+void	ft_usleep(unsigned long temps_ms)
+{
+	struct timeval	time_towait;
+
+	gettimeofday(&time_towait, NULL);
+	while (timestamp(time_towait) < temps_ms)
+		usleep(100);
 }

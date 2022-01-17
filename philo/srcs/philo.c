@@ -6,21 +6,11 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 13:51:30 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:41:40 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
-
-// void	print_text(const char *action, t_philo *philo)
-// {
-// 	unsigned long	time;
-
-// 	time = timestamp(philo->start);
-// 	pthread_mutex_lock(philo->active);
-// 	printf();
-// 	pthread_mutex_unlock(philo->active);
-// }
 
 void	launch_philos(t_data *data)
 {
@@ -31,13 +21,13 @@ void	launch_philos(t_data *data)
 	while (i < data->nb)
 	{
 		pthread_create(&data->philo[i].thread, NULL, wrapper, &data->philo[i]);
+		usleep(10);
 		i++;
 	}
 	i = 0;
 	while (i < data->nb)
 	{
 		pthread_detach(data->philo[i++].thread);
-		usleep(10);
 	}
 	pthread_create(&reaper, NULL, supervisor, data);
 	pthread_join(reaper, NULL);

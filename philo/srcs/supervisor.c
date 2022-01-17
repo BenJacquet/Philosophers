@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:25:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 13:48:18 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:15:44 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_starvation(t_data *data, int i)
 	{
 		pthread_mutex_unlock(&data->philo[i].active);
 		stop(data);
-		printf("%lums %d died\n", timestamp(data->philo[i].start) \
+		printf("%lu %d died\n", timestamp(data->philo[i].start) \
 			, data->philo[i].id);
 		end(data);
 		return (1);
