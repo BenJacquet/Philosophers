@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:57:02 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 17:26:31 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:48:23 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ void			print_data(t_data *data);
 unsigned long	gettime(void);
 unsigned long	timestamp(struct timeval start);
 int				ft_atoi(const char *str);
-void			ft_usleep(unsigned long temps_ms);
+void			ft_mssleep(unsigned long temps_ms);
 
 #endif

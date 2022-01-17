@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:34 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 17:33:47 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:48:54 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ unsigned long	gettime(void)
 	return (time);
 }
 
-void	ft_usleep(unsigned long temps_ms)
+void	ft_mssleep(unsigned long temps_ms)
 {
 	struct timeval	time_towait;
 

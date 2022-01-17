@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:24:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 17:41:17 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:48:23 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	print_action(const char *action, t_philo *philo, int code)
 		gettimeofday(&philo->last_meal, NULL);
 		philo->meals++;
 		pthread_mutex_unlock(&philo->active);
-		ft_usleep(philo->eat);
+		ft_mssleep(philo->eat);
 		pthread_mutex_unlock(philo->second);
 		pthread_mutex_unlock(philo->first);
 	}
 	else if (code == 4)
-		ft_usleep(philo->sleep);
+		ft_mssleep(philo->sleep);
 }
 
 int	action(t_philo *philo, int code)
