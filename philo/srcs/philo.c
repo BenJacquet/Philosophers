@@ -6,44 +6,21 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 17:51:31 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 13:11:01 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
 
-void	initialization(t_data *data, struct timeval start)
-{
-	int	i;
+// void	print_text(const char *action, t_philo *philo)
+// {
+// 	unsigned long	time;
 
-	i = 0;
-	if ((data->forks = malloc(sizeof(pthread_mutex_t) * (data->nb))) == NULL)
-	{
-		free(data->philo);
-		return ;
-	}
-	while (i < data->nb)
-		pthread_mutex_init(&data->forks[i++], NULL);
-	i = 0;
-	while (i < data->nb)
-	{
-		if (i % 2)
-		{
-			data->philo[i].first = &data->forks[i];
-			data->philo[i].second = &data->forks[(i + 1) % data->nb];
-		}
-		else
-		{
-			data->philo[i].first = &data->forks[(i + 1) % data->nb];
-			data->philo[i].second = &data->forks[i];
-		}
-		pthread_mutex_init(&data->philo[i].active, NULL);
-		pthread_mutex_init(&data->philo[i].alive, NULL);
-		data->philo[i].start = start;
-		gettimeofday(&data->philo[i].last_meal, NULL);
-		i++;
-	}
-}
+// 	time = timestamp(philo->start);
+// 	pthread_mutex_lock(philo->active);
+// 	printf();
+// 	pthread_mutex_unlock(philo->active);
+// }
 
 void	launch_philos(t_data *data)
 {
@@ -70,7 +47,6 @@ void	cleanup(t_data *data)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
 		pthread_mutex_destroy(&data->philo[i].active);
-		pthread_mutex_destroy(&data->philo[i].alive);
 		i++;
 	}
 	free(data->forks);

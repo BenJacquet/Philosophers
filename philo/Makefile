@@ -1,6 +1,7 @@
 NAME = philo
 
-SRCS = srcs/parsing.c \
+SRCS = srcs/init.c \
+	srcs/parsing.c \
 	srcs/philo.c \
 	srcs/routine.c \
 	srcs/supervisor.c \

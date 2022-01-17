@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:17 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 17:51:17 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 12:58:08 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	parse_params(int ac, char **av, t_data *data)
 	data->nb = ft_atoi(av[1]);
 	if (data->nb <= 0)
 		return (1);
-	if ((data->philo = malloc(sizeof(t_philo) * (data->nb))) == NULL)
+	data->philo = malloc(sizeof(t_philo) * (data->nb));
+	if (data->philo == NULL)
 		return (1);
 	while (i < data->nb)
 	{

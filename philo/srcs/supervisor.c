@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:25:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 14:59:18 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 13:48:18 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	stop(t_data *data)
 	i = 0;
 	while (i < data->nb)
 	{
-		pthread_mutex_lock(&data->philo[i].alive);
+		pthread_mutex_lock(&data->philo[i].active);
 		data->philo[i].stopped = 1;
-		pthread_mutex_unlock(&data->philo[i].alive);
+		pthread_mutex_unlock(&data->philo[i].active);
 		i++;
 	}
 }
@@ -39,10 +39,10 @@ void	end(t_data *data)
 		died = 0;
 		while (i < data->nb)
 		{
-			pthread_mutex_lock(&data->philo[i].alive);
+			pthread_mutex_lock(&data->philo[i].active);
 			if (data->philo[i].ended == 1 || data->nb == 1)
 				died++;
-			pthread_mutex_unlock(&data->philo[i].alive);
+			pthread_mutex_unlock(&data->philo[i].active);
 			i++;
 			if (died == data->nb)
 				return ;
@@ -52,17 +52,18 @@ void	end(t_data *data)
 
 int	check_starvation(t_data *data, int i)
 {
+	pthread_mutex_lock(&data->philo[i].active);
 	if (timestamp(data->philo[i].last_meal) >= (unsigned long)data->philo[i].die
 		|| data->philo[i].stopped == 1)
 	{
-		pthread_mutex_unlock(&data->philo[i].alive);
+		pthread_mutex_unlock(&data->philo[i].active);
 		stop(data);
 		printf("%lums %d died\n", timestamp(data->philo[i].start) \
 			, data->philo[i].id);
-		pthread_mutex_unlock(&data->philo[i].active);
 		end(data);
 		return (1);
 	}
+	pthread_mutex_unlock(&data->philo[i].active);
 	return (0);
 }
 
@@ -75,11 +76,11 @@ int	check_fullness(t_data *data)
 	full = 0;
 	while (i < data->nb)
 	{
-		pthread_mutex_lock(&data->philo[i].alive);
+		pthread_mutex_lock(&data->philo[i].active);
 		if (data->philo[i].meals == data->philo[i].max_meals
 			&& data->philo[i].max_meals != -1)
 			full++;
-		pthread_mutex_unlock(&data->philo[i].alive);
+		pthread_mutex_unlock(&data->philo[i].active);
 		i++;
 	}
 	if (full == data->nb)
@@ -102,17 +103,10 @@ void	*supervisor(void *v_data)
 		i = 0;
 		while (i < data->nb)
 		{
-			pthread_mutex_lock(&data->philo[i].active);
 			if (check_fullness(data) == 1)
-			{
-				pthread_mutex_unlock(&data->philo[i].active);
 				return (NULL);
-			}
-			pthread_mutex_lock(&data->philo[i].alive);
 			if (check_starvation(data, i))
 				return (NULL);
-			pthread_mutex_unlock(&data->philo[i].alive);
-			pthread_mutex_unlock(&data->philo[i].active);
 			i++;
 		}
 	}

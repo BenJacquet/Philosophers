@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:57:02 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 12:57:17 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 13:01:09 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_philo
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
 	pthread_mutex_t	active;
-	pthread_mutex_t	alive;
 }					t_philo;
 
 typedef struct s_data
@@ -55,8 +54,14 @@ typedef struct s_data
 
 int				core(int ac, char **av);
 void			launch_philos(t_data *data);
-void			initialization(t_data *data, struct timeval start);
 void			cleanup(t_data *data);
+
+/*
+**------INIT FUNCTIONS---------------------------------------------------------
+*/
+
+void			initialization(t_data *data, struct timeval start);
+void			initialization_two(t_data *data, struct timeval start);
 
 /*
 **------ROUTINE FUNCTIONS-------------------------------------------------------

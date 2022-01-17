@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:24:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/14 17:50:09 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/17 13:48:28 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void	end_philo(t_philo *philo, int code)
 
 void	print_action(const char *action, t_philo *philo, int code)
 {
-	pthread_mutex_lock(&philo->active);
 	if (code == 3)
 	{
-		pthread_mutex_lock(&philo->alive);
+		pthread_mutex_lock(&philo->active);
 		gettimeofday(&philo->last_meal, NULL);
 		philo->meals++;
-		pthread_mutex_unlock(&philo->alive);
+		pthread_mutex_unlock(&philo->active);
 	}
-	pthread_mutex_unlock(&philo->active);
+	pthread_mutex_lock(&philo->active);
 	if (philo->stopped == 0)
 		printf(action, timestamp(philo->start), philo->id);
+	pthread_mutex_unlock(&philo->active);
 	if (code == 3)
 		usleep(philo->eat * 1000);
 	else if (code == 4)
@@ -44,16 +44,16 @@ void	print_action(const char *action, t_philo *philo, int code)
 
 int	action(t_philo *philo, int code)
 {
-	pthread_mutex_lock(&philo->alive);
+	pthread_mutex_lock(&philo->active);
 	if (philo->stopped == 1)
 	{
-		pthread_mutex_unlock(&philo->alive);
+		pthread_mutex_unlock(&philo->active);
 		end_philo(philo, code);
 		return (1);
 	}
 	else
 	{
-		pthread_mutex_unlock(&philo->alive);
+		pthread_mutex_unlock(&philo->active);
 		if (code == 1 || code == 2)
 			print_action("%lums %d has taken a fork\n", philo, code);
 		if (philo->nb == 1)
@@ -85,14 +85,14 @@ int	routine(t_philo *philo)
 			return (1);
 		pthread_mutex_unlock(philo->first);
 		pthread_mutex_unlock(philo->second);
-		pthread_mutex_lock(&philo->alive);
-		// if ((philo->meals == philo->max_meals && philo->max_meals != -1)
-		// 	|| philo->stopped == 1)
-		// {
-		// 	pthread_mutex_unlock(&philo->alive);
-		// 	return (1);
-		// }
-		// pthread_mutex_unlock(&philo->alive);
+		pthread_mutex_lock(&philo->active);
+		if ((philo->meals == philo->max_meals && philo->max_meals != -1)
+			|| philo->stopped == 1)
+		{
+			pthread_mutex_unlock(&philo->active);
+			return (1);
+		}
+		pthread_mutex_unlock(&philo->active);
 		if (action(philo, 4) == 1)
 			return (1);
 		if (action(philo, 5) == 1)
@@ -106,8 +106,8 @@ void	*wrapper(void *v_philo)
 
 	philo = (t_philo *)v_philo;
 	routine(philo);
-	pthread_mutex_lock(&philo->alive);
+	pthread_mutex_lock(&philo->active);
 	philo->ended = 1;
-	pthread_mutex_unlock(&philo->alive);
+	pthread_mutex_unlock(&philo->active);
 	return (NULL);
 }
