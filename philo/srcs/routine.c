@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:24:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 17:48:23 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:28:36 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,39 @@ void	print_action(const char *action, t_philo *philo, int code)
 		gettimeofday(&philo->last_meal, NULL);
 		philo->meals++;
 		pthread_mutex_unlock(&philo->active);
-		ft_mssleep(philo->eat);
+		usleep(philo->eat * 1000);
 		pthread_mutex_unlock(philo->second);
 		pthread_mutex_unlock(philo->first);
 	}
 	else if (code == 4)
-		ft_mssleep(philo->sleep);
+		usleep(philo->sleep * 1000);
+}
+
+int	is_active(t_philo *philo, int code)
+{
+	pthread_mutex_unlock(&philo->active);
+	if (code == 1)
+	{
+		pthread_mutex_lock(philo->first);
+		print_action("%lu %d has taken a fork\n", philo, code);
+		if (philo->nb == 1)
+		{
+			pthread_mutex_unlock(philo->first);
+			return (1);
+		}
+	}
+	else if (code == 2)
+	{
+		pthread_mutex_lock(philo->second);
+		print_action("%lu %d has taken a fork\n", philo, code);
+	}
+	else if (code == 3)
+		print_action("%lu %d is eating\n", philo, code);
+	else if (code == 4)
+		print_action("%lu %d is sleeping\n", philo, code);
+	else if (code == 5)
+		print_action("%lu %d is thinking\n", philo, code);
+	return (0);
 }
 
 int	action(t_philo *philo, int code)
@@ -54,28 +81,8 @@ int	action(t_philo *philo, int code)
 	}
 	else
 	{
-		pthread_mutex_unlock(&philo->active);
-		if (code == 1)
-		{
-			pthread_mutex_lock(philo->first);
-			print_action("%lu %d has taken a fork\n", philo, code);
-			if (philo->nb == 1)
-			{
-				pthread_mutex_unlock(philo->first);
-				return (1);
-			}
-		}
-		else if (code == 2)
-		{
-			pthread_mutex_lock(philo->second);
-			print_action("%lu %d has taken a fork\n", philo, code);
-		}
-		else if (code == 3)
-			print_action("%lu %d is eating\n", philo, code);
-		else if (code == 4)
-			print_action("%lu %d is sleeping\n", philo, code);
-		else if (code == 5)
-			print_action("%lu %d is thinking\n", philo, code);
+		if (is_active(philo, code) == 1)
+			return (1);
 		return (0);
 	}
 }
@@ -103,16 +110,4 @@ int	routine(t_philo *philo)
 		else if (action(philo, 5) == 1)
 			return (1);
 	}
-}
-
-void	*wrapper(void *v_philo)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)v_philo;
-	routine(philo);
-	pthread_mutex_lock(&philo->active);
-	philo->ended = 1;
-	pthread_mutex_unlock(&philo->active);
-	return (NULL);
 }

@@ -6,11 +6,23 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 17:41:40 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:28:41 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
+
+void	*wrapper(void *v_philo)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)v_philo;
+	routine(philo);
+	pthread_mutex_lock(&philo->active);
+	philo->ended = 1;
+	pthread_mutex_unlock(&philo->active);
+	return (NULL);
+}
 
 void	launch_philos(t_data *data)
 {
@@ -21,7 +33,7 @@ void	launch_philos(t_data *data)
 	while (i < data->nb)
 	{
 		pthread_create(&data->philo[i].thread, NULL, wrapper, &data->philo[i]);
-		usleep(10);
+		usleep(500);
 		i++;
 	}
 	i = 0;

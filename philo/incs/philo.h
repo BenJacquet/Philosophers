@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:57:02 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 17:48:23 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:24:58 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void			initialization_two(t_data *data, struct timeval start);
 void			*wrapper(void *v_philo);
 int				routine(t_philo *philo);
 int				action(t_philo *philo, int code);
+int				is_active(t_philo *philo, int code);
 void			print_action(const char *action, t_philo *philo, int code);
 void			end_philo(t_philo *philo, int code);
 
@@ -96,6 +97,7 @@ void			print_data(t_data *data);
 
 unsigned long	gettime(void);
 unsigned long	timestamp(struct timeval start);
+int				check_digit(const char *str, int i);
 int				ft_atoi(const char *str);
 void			ft_mssleep(unsigned long temps_ms);
 

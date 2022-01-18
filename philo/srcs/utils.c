@@ -6,11 +6,23 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 12:21:34 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/17 17:48:54 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:20:19 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
+
+int	check_digit(const char *str, int i)
+{
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else
+			return (1);
+	}
+	return (0);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -23,7 +35,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] == '-')
+	if (str[i] == '-' || check_digit(str, i) == 1)
 		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 		result = (result * 10) + (str[i++] - 48);
