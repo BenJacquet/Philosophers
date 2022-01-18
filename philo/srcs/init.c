@@ -6,11 +6,27 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:01:40 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/18 13:32:08 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:24:54 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
+
+// void	initialization_two(t_data *data, struct timeval start)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < data->nb)
+// 	{
+// 		data->philo[i].first = &data->forks[i];
+// 		data->philo[i].second = &data->forks[(i + 1) % data->nb];
+// 		pthread_mutex_init(&data->philo[i].active, NULL);
+// 		data->philo[i].start = start;
+// 		gettimeofday(&data->philo[i++].last_meal, NULL);
+// 	}
+// }
+
 
 void	initialization_two(t_data *data, struct timeval start)
 {
@@ -19,8 +35,16 @@ void	initialization_two(t_data *data, struct timeval start)
 	i = 0;
 	while (i < data->nb)
 	{
-		data->philo[i].first = &data->forks[i];
-		data->philo[i].second = &data->forks[(i + 1) % data->nb];
+		if (i % data->nb)
+		{
+			data->philo[i].first = &data->forks[i];
+			data->philo[i].second = &data->forks[(i + 1) % data->nb];
+		}
+		else
+		{
+			data->philo[i].first = &data->forks[(i + 1) % data->nb];
+			data->philo[i].second = &data->forks[i];
+		}
 		pthread_mutex_init(&data->philo[i].active, NULL);
 		data->philo[i].start = start;
 		gettimeofday(&data->philo[i++].last_meal, NULL);

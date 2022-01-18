@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 11:24:20 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/18 13:28:36 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:10:39 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ void	print_action(const char *action, t_philo *philo, int code)
 
 int	is_active(t_philo *philo, int code)
 {
-	pthread_mutex_unlock(&philo->active);
 	if (code == 1)
 	{
 		pthread_mutex_lock(philo->first);
-		print_action("%lu %d has taken a fork\n", philo, code);
+		print_action("%lums %d has taken a fork\n", philo, code);
 		if (philo->nb == 1)
 		{
 			pthread_mutex_unlock(philo->first);
@@ -59,31 +58,32 @@ int	is_active(t_philo *philo, int code)
 	else if (code == 2)
 	{
 		pthread_mutex_lock(philo->second);
-		print_action("%lu %d has taken a fork\n", philo, code);
+		print_action("%lums %d has taken a fork\n", philo, code);
 	}
 	else if (code == 3)
-		print_action("%lu %d is eating\n", philo, code);
+		print_action("%lums %d is eating\n", philo, code);
 	else if (code == 4)
-		print_action("%lu %d is sleeping\n", philo, code);
+		print_action("%lums %d is sleeping\n", philo, code);
 	else if (code == 5)
-		print_action("%lu %d is thinking\n", philo, code);
+		print_action("%lums %d is thinking\n", philo, code);
 	return (0);
 }
 
 int	action(t_philo *philo, int code)
 {
 	pthread_mutex_lock(&philo->active);
-	if (philo->stopped == 1)
+	if (philo->stopped == 0)
+	{
+		pthread_mutex_unlock(&philo->active);
+		if (is_active(philo, code) == 1)
+			return (1);
+		return (0);
+	}
+	else
 	{
 		pthread_mutex_unlock(&philo->active);
 		end_philo(philo, code);
 		return (1);
-	}
-	else
-	{
-		if (is_active(philo, code) == 1)
-			return (1);
-		return (0);
 	}
 }
 

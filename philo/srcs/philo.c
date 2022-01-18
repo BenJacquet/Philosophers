@@ -6,7 +6,7 @@
 /*   By: jabenjam <jabenjam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 11:54:36 by jabenjam          #+#    #+#             */
-/*   Updated: 2022/01/18 13:28:41 by jabenjam         ###   ########.fr       */
+/*   Updated: 2022/01/18 14:02:00 by jabenjam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	launch_philos(t_data *data)
 	while (i < data->nb)
 	{
 		pthread_create(&data->philo[i].thread, NULL, wrapper, &data->philo[i]);
-		usleep(500);
+		usleep(600);
 		i++;
 	}
 	i = 0;
